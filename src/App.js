@@ -1,24 +1,19 @@
-import logo from './logo.svg';
-import './App.css';
+import { Col, Row, Modal, Button, Form } from "react-bootstrap";
+import { useState } from "react";
 
+import LoginModal from "./components/LoginModal";
 function App() {
+  const [show, setShow] = useState(false);
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Button variant="primary" onClick={handleShow}>
+        Login
+      </Button>
+      <LoginModal handleClose={handleClose} show={show} />
+    </>
   );
 }
 
