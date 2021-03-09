@@ -11,6 +11,7 @@ export default function Header({
   handleShowRegister,
   isLogin,
   isUser,
+  chartCounter,
 }) {
   const handleNavButton = () => {
     return (
@@ -29,8 +30,33 @@ export default function Header({
     return (
       <>
         <a href="#!">
-          {" "}
-          <img src={iconCart} alt="cart" width="40" />
+          <div style={{ width: "40px", height: "40px", position: "relative" }}>
+            {chartCounter > 0 && (
+              <div
+                className="cart-badge"
+                style={{
+                  width: "15px",
+                  height: "15px",
+                  position: "absolute",
+                  right: "0px",
+                  top: "8px",
+                  borderRadius: "10px",
+                }}
+                className="bg-danger d-flex align-item-center justify-content-center"
+              >
+                <small
+                  style={{
+                    fontSize: "12px",
+                    color: "white",
+                    fontWeight: "bold",
+                  }}
+                >
+                  {chartCounter}
+                </small>
+              </div>
+            )}
+            <img src={iconCart} alt="cart" width="40" />
+          </div>
         </a>
         <Dropdown className="ml-2">
           <Dropdown.Toggle

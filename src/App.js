@@ -10,6 +10,7 @@ function App() {
   // isLogin
   const [isLogin, setIsLogin] = useState(true);
   const [isUser, setIsUser] = useState(true);
+  const [chartCounter, setChartCounter] = useState(0);
   // Login modal stuff
   const [showLogin, setShowLogin] = useState(false);
   const handleCloseLogin = () => setShowLogin(false);
@@ -20,6 +21,20 @@ function App() {
   const handleCloseRegister = () => setShowRegister(false);
   const handleShowRegister = () => setShowRegister(true);
 
+  const [fakeRoute, setFakeRoute] = useState("landing");
+  // Fake router
+  const fakeRouter = () => {
+    switch (fakeRoute) {
+      case "landing":
+        return (
+          <LandingPage handleShowLogin={handleShowLogin} isLogin={isLogin} />
+        );
+        break;
+
+      default:
+        break;
+    }
+  };
   return (
     <>
       <Header
@@ -27,8 +42,9 @@ function App() {
         handleShowRegister={handleShowRegister}
         isLogin={isLogin}
         isUser={isUser}
+        chartCounter={chartCounter}
       />
-      <LandingPage handleShowLogin={handleShowLogin} isLogin={isLogin} />
+      {fakeRouter()}
       <LoginModal
         handleCloseLogin={handleCloseLogin}
         handleShowRegister={handleShowRegister}

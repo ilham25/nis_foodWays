@@ -22,7 +22,7 @@ export default function RestaurantCard({
         onClick={handleClick}
       >
         <Card style={{ border: "none" }}>
-          <Card.Img variant="top" src={photo} height="134" />
+          <Card.Img variant="top" src={photo} height="134" className="p-2" />
           <Card.Body>
             <Card.Title className="heading font-weight-bolder">
               {title}
