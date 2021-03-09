@@ -1,8 +1,16 @@
 import { Modal, Button, Form } from "react-bootstrap";
 
-export default function LoginModal({ show, handleClose }) {
+export default function LoginModal({
+  showLogin,
+  handleCloseLogin,
+  handleShowRegister,
+}) {
+  const openRegister = () => {
+    handleCloseLogin();
+    handleShowRegister();
+  };
   return (
-    <Modal show={show} onHide={handleClose} size="md">
+    <Modal show={showLogin} onHide={handleCloseLogin}>
       <Modal.Body className="px-4 py-5">
         <h2 className="text-warning mb-4">Login</h2>
         <Form className="d-flex flex-column">
@@ -18,7 +26,11 @@ export default function LoginModal({ show, handleClose }) {
           </Button>
           <Form.Text className="text-muted text-center">
             Don't have an account ? Click{" "}
-            <a href="#" className="font-weight-bold text-secondary">
+            <a
+              href="#"
+              className="font-weight-bold text-secondary"
+              onClick={openRegister}
+            >
               Here
             </a>
           </Form.Text>
