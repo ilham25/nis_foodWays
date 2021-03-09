@@ -8,7 +8,8 @@ import Header from "./components/Header";
 
 function App() {
   // isLogin
-  const [isLogin, setIsLogin] = useState(false);
+  const [isLogin, setIsLogin] = useState(true);
+  const [isUser, setIsUser] = useState(true);
   // Login modal stuff
   const [showLogin, setShowLogin] = useState(false);
   const handleCloseLogin = () => setShowLogin(false);
@@ -25,6 +26,7 @@ function App() {
         handleShowLogin={handleShowLogin}
         handleShowRegister={handleShowRegister}
         isLogin={isLogin}
+        isUser={isUser}
       />
       <LandingPage handleShowLogin={handleShowLogin} isLogin={isLogin} />
       <LoginModal

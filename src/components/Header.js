@@ -1,9 +1,16 @@
-import { Nav, Navbar, Button, Container } from "react-bootstrap";
+import { Nav, Navbar, Button, Container, Dropdown } from "react-bootstrap";
+// SVGs
 import deliverer from "../assets/svg/deliver.svg";
+import iconProfile from "../assets/svg/profile.svg";
+import iconAddProduct from "../assets/svg/addproduct.svg";
+import iconLogout from "../assets/svg/logout.svg";
+import iconCart from "../assets/svg/cart.svg";
+
 export default function Header({
   handleShowLogin,
   handleShowRegister,
   isLogin,
+  isUser,
 }) {
   const handleNavButton = () => {
     return (
@@ -17,6 +24,49 @@ export default function Header({
       </>
     );
   };
+
+  const handleProfileButton = () => {
+    return (
+      <>
+        <a href="#!">
+          {" "}
+          <img src={iconCart} alt="cart" width="40" />
+        </a>
+        <Dropdown className="ml-2">
+          <Dropdown.Toggle
+            style={{
+              backgroundColor: "transparent",
+              border: "none",
+              outlineWidth: "0px",
+            }}
+          >
+            <img
+              src="https://picsum.photos/60/60"
+              alt="photo"
+              className="rounded-circle"
+              style={{ border: "4px solid black" }}
+            />
+          </Dropdown.Toggle>
+
+          <Dropdown.Menu style={{ position: "absolute", left: "-50px" }}>
+            <Dropdown.Item href="#!">
+              <img src={iconProfile} alt="profile icon" width="20" /> Profile
+            </Dropdown.Item>
+            {!isUser && (
+              <Dropdown.Item href="#!">
+                <img src={iconAddProduct} alt="profile icon" width="20" /> Add
+                Product
+              </Dropdown.Item>
+            )}
+            <Dropdown.Divider />
+            <Dropdown.Item href="#!">
+              <img src={iconLogout} alt="profile icon" width="20" /> Logout
+            </Dropdown.Item>
+          </Dropdown.Menu>
+        </Dropdown>
+      </>
+    );
+  };
   return (
     <Navbar bg="warning" variant="light">
       <Container fluid className="px-3">
@@ -25,7 +75,8 @@ export default function Header({
         </Navbar.Brand>
         <img src={deliverer} alt="deliverer" width="40" />
         <Nav className="mr-auto"></Nav>
-        {isLogin ? <p>login</p> : handleNavButton()}
+
+        {isLogin ? handleProfileButton() : handleNavButton()}
       </Container>
     </Navbar>
   );
