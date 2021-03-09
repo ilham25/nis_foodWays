@@ -6,16 +6,18 @@ export default function RestaurantCard({
   title,
   range,
   photo,
+  setFakeRoute,
 }) {
   const handleClick = () => {
     if (isLogin) {
-      alert("login");
+      // alert("login");
+      setFakeRoute("detail");
     } else {
       handleShowLogin();
     }
   };
   return (
-    <Col md={3}>
+    <Col md={3} className="mb-4">
       <a
         href="#!"
         style={{ textDecoration: "none", color: "black" }}

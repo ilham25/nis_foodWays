@@ -20,6 +20,21 @@ body {
 .bg-grey {
   background-color: #efefef;
 }
+.btn-brown {
+  background-color: #433434;
+  color: white;
+}
+.btn-brown:hover {
+  background-color: #312626;
+  color: white;
+}
+.text-brown {
+  color: #613d2b;
+}
+
+.divider {
+  background-color: #433434;
+}
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;

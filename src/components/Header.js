@@ -6,20 +6,25 @@ import iconAddProduct from "../assets/svg/addproduct.svg";
 import iconLogout from "../assets/svg/logout.svg";
 import iconCart from "../assets/svg/cart.svg";
 
+// img
+import imgProfile from "../assets/img/profile.png";
+
 export default function Header({
   handleShowLogin,
   handleShowRegister,
   isLogin,
   isUser,
-  chartCounter,
+  cartCounter,
+  setIsLogin,
+  setFakeRoute,
 }) {
   const handleNavButton = () => {
     return (
       <>
-        <Button variant="secondary mr-2 px-4 py-1" onClick={handleShowLogin}>
+        <Button variant="brown mr-2 px-4 py-1" onClick={handleShowLogin}>
           Login
         </Button>
-        <Button variant="secondary px-4 py-1" onClick={handleShowRegister}>
+        <Button variant="brown px-4 py-1" onClick={handleShowRegister}>
           Register
         </Button>
       </>
@@ -27,11 +32,18 @@ export default function Header({
   };
 
   const handleProfileButton = () => {
+    const handleLogout = () => {
+      setIsLogin(false);
+    };
+
+    const handleCart = () => {
+      setFakeRoute("cart");
+    };
     return (
       <>
-        <a href="#!">
+        <a href="#!" onClick={handleCart}>
           <div style={{ width: "40px", height: "40px", position: "relative" }}>
-            {chartCounter > 0 && (
+            {cartCounter > 0 && (
               <div
                 className="cart-badge"
                 style={{
@@ -51,7 +63,7 @@ export default function Header({
                     fontWeight: "bold",
                   }}
                 >
-                  {chartCounter}
+                  {cartCounter}
                 </small>
               </div>
             )}
@@ -67,10 +79,10 @@ export default function Header({
             }}
           >
             <img
-              src="https://picsum.photos/60/60"
+              src={imgProfile}
               alt="photo"
-              className="rounded-circle"
-              style={{ border: "4px solid black" }}
+              width="60"
+              style={{ border: "4px solid black", borderRadius: "50%" }}
             />
           </Dropdown.Toggle>
 
@@ -85,7 +97,7 @@ export default function Header({
               </Dropdown.Item>
             )}
             <Dropdown.Divider />
-            <Dropdown.Item href="#!">
+            <Dropdown.Item href="#!" onClick={handleLogout}>
               <img src={iconLogout} alt="profile icon" width="20" /> Logout
             </Dropdown.Item>
           </Dropdown.Menu>

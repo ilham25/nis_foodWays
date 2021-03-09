@@ -41,7 +41,7 @@ export default function RegisterModal({
               <option>As Partner</option>
             </Form.Control>
           </Form.Group>
-          <Button variant="secondary" type="submit" className="mb-3">
+          <Button variant="brown" type="submit" className="mb-3">
             Register
           </Button>
           <Form.Text className="text-muted text-center">

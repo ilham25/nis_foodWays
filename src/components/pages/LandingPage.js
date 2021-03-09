@@ -16,7 +16,11 @@ import pecel from "../../assets/img/restaurant/pecel.png";
 import PopularCard from "../PopularCard";
 import RestaurantCard from "../RestaurantCard";
 
-export default function LandingPage({ handleShowLogin, isLogin }) {
+export default function LandingPage({
+  handleShowLogin,
+  isLogin,
+  setFakeRoute,
+}) {
   return (
     <>
       <HeroSection />
@@ -45,6 +49,7 @@ export default function LandingPage({ handleShowLogin, isLogin }) {
               title="Geprek Bensu"
               photo={geprek}
               range="0.2 KM"
+              setFakeRoute={setFakeRoute}
             />
             <RestaurantCard
               handleShowLogin={handleShowLogin}

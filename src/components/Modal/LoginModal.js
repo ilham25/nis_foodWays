@@ -4,6 +4,7 @@ export default function LoginModal({
   showLogin,
   handleCloseLogin,
   handleShowRegister,
+  setIsLogin,
 }) {
   const openRegister = () => {
     handleCloseLogin();
@@ -12,8 +13,10 @@ export default function LoginModal({
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("login");
+    setIsLogin(true);
+    handleCloseLogin();
   };
+
   return (
     <Modal show={showLogin} onHide={handleCloseLogin}>
       <Modal.Body className="px-4 py-5">
@@ -26,7 +29,7 @@ export default function LoginModal({
           <Form.Group controlId="password">
             <Form.Control type="password" placeholder="Password" />
           </Form.Group>
-          <Button variant="secondary" type="submit" className="mb-3">
+          <Button variant="brown" type="submit" className="mb-3">
             Login
           </Button>
           <Form.Text className="text-muted text-center">
