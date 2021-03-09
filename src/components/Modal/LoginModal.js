@@ -9,11 +9,16 @@ export default function LoginModal({
     handleCloseLogin();
     handleShowRegister();
   };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log("login");
+  };
   return (
     <Modal show={showLogin} onHide={handleCloseLogin}>
       <Modal.Body className="px-4 py-5">
         <h2 className="text-warning mb-4">Login</h2>
-        <Form className="d-flex flex-column">
+        <Form className="d-flex flex-column" onSubmit={handleSubmit}>
           <Form.Group controlId="email">
             <Form.Control type="email" placeholder="Email" required />
           </Form.Group>
@@ -27,7 +32,7 @@ export default function LoginModal({
           <Form.Text className="text-muted text-center">
             Don't have an account ? Click{" "}
             <a
-              href="#"
+              href="#!"
               className="font-weight-bold text-secondary"
               onClick={openRegister}
             >

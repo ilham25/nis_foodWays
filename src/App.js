@@ -3,7 +3,12 @@ import { useState } from "react";
 
 import LoginModal from "./components/Modal/LoginModal";
 import RegisterModal from "./components/Modal/RegisterModal";
+import LandingPage from "./components/pages/LandingPage";
+import Header from "./components/Header";
+
 function App() {
+  // isLogin
+  const [isLogin, setIsLogin] = useState(false);
   // Login modal stuff
   const [showLogin, setShowLogin] = useState(false);
   const handleCloseLogin = () => setShowLogin(false);
@@ -16,19 +21,20 @@ function App() {
 
   return (
     <>
-      <Button variant="primary" onClick={handleShowLogin}>
-        Login
-      </Button>
-      <Button variant="success" onClick={handleShowRegister}>
-        Register
-      </Button>
+      <Header
+        handleShowLogin={handleShowLogin}
+        handleShowRegister={handleShowRegister}
+        isLogin={isLogin}
+      />
+      <LandingPage handleShowLogin={handleShowLogin} isLogin={isLogin} />
       <LoginModal
         handleCloseLogin={handleCloseLogin}
-        showLogin={showLogin}
         handleShowRegister={handleShowRegister}
+        showLogin={showLogin}
       />
       <RegisterModal
         handleCloseRegister={handleCloseRegister}
+        handleShowLogin={handleShowLogin}
         showRegister={showRegister}
       />
     </>
