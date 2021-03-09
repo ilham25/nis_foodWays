@@ -72,6 +72,7 @@ export default function Header({
         </a>
         <Dropdown className="ml-2">
           <Dropdown.Toggle
+            variant="warning"
             style={{
               backgroundColor: "transparent",
               border: "none",

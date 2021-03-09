@@ -23,6 +23,8 @@ function App() {
   const handleCloseRegister = () => setShowRegister(false);
   const handleShowRegister = () => setShowRegister(true);
 
+  //
+
   // Cart stuff
   const [cartCounter, setCartCounter] = useState(0);
 
