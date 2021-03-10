@@ -1,4 +1,5 @@
 import { Nav, Navbar, Button, Container, Dropdown } from "react-bootstrap";
+import { Link, useHistory } from "react-router-dom";
 // SVGs
 import deliverer from "../assets/svg/deliver.svg";
 import iconProfile from "../assets/svg/profile.svg";
@@ -9,15 +10,16 @@ import iconCart from "../assets/svg/cart.svg";
 // img
 import imgProfile from "../assets/img/profile.png";
 
+import { isLogin, logout } from "../utils/auth";
+
 export default function Header({
   handleShowLogin,
   handleShowRegister,
-  isLogin,
   isUser,
   cartCounter,
   setIsLogin,
-  setFakeRoute,
 }) {
+  const history = useHistory();
   const handleNavButton = () => {
     return (
       <>
@@ -33,15 +35,13 @@ export default function Header({
 
   const handleProfileButton = () => {
     const handleLogout = () => {
-      setIsLogin(false);
+      history.push("/");
+      logout();
     };
 
-    const handleCart = () => {
-      setFakeRoute("cart");
-    };
     return (
       <>
-        <a href="#!" onClick={handleCart}>
+        <Link to="/cart">
           <div style={{ width: "40px", height: "40px", position: "relative" }}>
             {cartCounter > 0 && (
               <div
@@ -69,7 +69,7 @@ export default function Header({
             )}
             <img src={iconCart} alt="cart" width="40" />
           </div>
-        </a>
+        </Link>
         <Dropdown className="ml-2">
           <Dropdown.Toggle
             variant="warning"
@@ -82,8 +82,8 @@ export default function Header({
             <img
               src={imgProfile}
               alt="photo"
-              width="60"
-              style={{ border: "4px solid black", borderRadius: "50%" }}
+              width="64"
+              style={{ borderRadius: "50%" }}
             />
           </Dropdown.Toggle>
 
@@ -109,13 +109,13 @@ export default function Header({
   return (
     <Navbar bg="warning" variant="light">
       <Container fluid className="px-3">
-        <Navbar.Brand href="/" className="brand-text mr-2 font-weight-bold">
+        <Navbar.Brand as={Link} to="/" className="brand-text font-weight-bold">
           WaysFood
+          <img src={deliverer} alt="deliverer" width="40" className="ml-2" />
         </Navbar.Brand>
-        <img src={deliverer} alt="deliverer" width="40" />
         <Nav className="mr-auto"></Nav>
 
-        {isLogin ? handleProfileButton() : handleNavButton()}
+        {isLogin() ? handleProfileButton() : handleNavButton()}
       </Container>
     </Navbar>
   );

@@ -1,38 +1,40 @@
 import { Col, Card } from "react-bootstrap";
+import { Link, useHistory } from "react-router-dom";
+
+import { isLogin } from "../utils/auth";
 
 export default function RestaurantCard({
   handleShowLogin,
-  isLogin,
+  id,
   title,
   range,
   photo,
-  setFakeRoute,
 }) {
+  const history = useHistory();
   const handleClick = () => {
-    if (isLogin) {
+    if (isLogin()) {
       // alert("login");
-      setFakeRoute("detail");
+      history.push(`/detail/${id}`);
     } else {
       handleShowLogin();
     }
   };
   return (
-    <Col md={3} className="mb-4">
-      <a
-        href="#!"
-        style={{ textDecoration: "none", color: "black" }}
-        onClick={handleClick}
-      >
-        <Card style={{ border: "none" }}>
-          <Card.Img variant="top" src={photo} height="134" className="p-2" />
-          <Card.Body>
-            <Card.Title className="heading font-weight-bolder">
-              {title}
-            </Card.Title>
-            <Card.Text className="heading">{range}</Card.Text>
-          </Card.Body>
-        </Card>
-      </a>
+    <Col
+      md={3}
+      className="mb-4"
+      style={{ cursor: "pointer" }}
+      onClick={handleClick}
+    >
+      <Card style={{ border: "none" }}>
+        <Card.Img variant="top" src={photo} height="134" className="p-2" />
+        <Card.Body>
+          <Card.Title className="heading font-weight-bolder">
+            {title}
+          </Card.Title>
+          <Card.Text className="heading">{range} KM</Card.Text>
+        </Card.Body>
+      </Card>
     </Col>
   );
 }

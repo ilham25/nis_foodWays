@@ -1,4 +1,4 @@
-import { Button } from "react-bootstrap";
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import { useState } from "react";
 
 import LoginModal from "./components/Modal/LoginModal";
@@ -10,7 +10,6 @@ import CartPage from "./components/pages/CartPage";
 
 function App() {
   // isLogin
-  const [isLogin, setIsLogin] = useState(true);
   const [isUser, setIsUser] = useState(true);
 
   // Login modal stuff
@@ -23,71 +22,44 @@ function App() {
   const handleCloseRegister = () => setShowRegister(false);
   const handleShowRegister = () => setShowRegister(true);
 
-  //
-
   // Cart stuff
   const [cartCounter, setCartCounter] = useState(0);
 
   // Fake router
-  const [fakeRoute, setFakeRoute] = useState("landing");
-  const fakeRouter = () => {
-    switch (fakeRoute) {
-      case "landing":
-        return (
-          <LandingPage
-            handleShowLogin={handleShowLogin}
-            isLogin={isLogin}
-            setFakeRoute={setFakeRoute}
-          />
-        );
-        break;
-      case "detail":
-        return (
+
+  return (
+    <Router>
+      <Header
+        handleShowLogin={handleShowLogin}
+        handleShowRegister={handleShowRegister}
+        isUser={isUser}
+        cartCounter={cartCounter}
+      />
+      <Switch>
+        <Route exact path="/">
+          <LandingPage handleShowLogin={handleShowLogin} />
+        </Route>
+        <Route exact path="/detail/:id">
           <DetailProductPage
             setCartCounter={setCartCounter}
             cartCounter={cartCounter}
           />
-        );
-        break;
-      case "cart":
-        return <CartPage />;
-        break;
-      default:
-        return (
-          <LandingPage
-            handleShowLogin={handleShowLogin}
-            isLogin={isLogin}
-            setFakeRoute={setFakeRoute}
-          />
-        );
-        break;
-    }
-  };
-
-  return (
-    <>
-      <Header
-        handleShowLogin={handleShowLogin}
-        handleShowRegister={handleShowRegister}
-        isLogin={isLogin}
-        isUser={isUser}
-        cartCounter={cartCounter}
-        setIsLogin={setIsLogin}
-        setFakeRoute={setFakeRoute}
-      />
-      {fakeRouter()}
+        </Route>
+        <Route exact path="/cart">
+          <CartPage />
+        </Route>
+      </Switch>
       <LoginModal
         handleCloseLogin={handleCloseLogin}
         handleShowRegister={handleShowRegister}
         showLogin={showLogin}
-        setIsLogin={setIsLogin}
       />
       <RegisterModal
         handleCloseRegister={handleCloseRegister}
         handleShowLogin={handleShowLogin}
         showRegister={showRegister}
       />
-    </>
+    </Router>
   );
 }
 

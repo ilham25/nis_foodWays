@@ -11,42 +11,6 @@ body {
   background-color: #efefef;
 }
 
-.heading {
-  font-family: "Abhaya Libre", serif;
-}
-.brand-text {
-  font-family: "Barlow", sans-serif;
-  font-style: italic;
-}
-.bg-grey {
-  background-color: #efefef;
-}
-.btn-brown {
-  background-color: #433434;
-  color: white;
-}
-.btn-brown:hover {
-  background-color: #312626;
-  color: white;
-}
-.text-brown {
-  color: #613d2b;
-}
-
-.divider {
-  background-color: #433434;
-}
-
-.map-container {
-  position: absolute;
-  top: 0;
-  right: 0;
-  left: 0;
-  bottom: 0;
-  width: 10vw;
-  height: 10vh;
-}
-
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;

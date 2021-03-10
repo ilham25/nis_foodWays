@@ -15,12 +15,15 @@ export default function MenuCard({
       <Card style={{ border: "none" }}>
         <Card.Img variant="top" src={photo} height="134" className="p-2" />
         <Card.Body>
-          <Card.Title className="heading font-weight-bolder">
+          <Card.Title
+            className="heading font-weight-bolder"
+            style={{ height: "40px" }}
+          >
             {title}
           </Card.Title>
           <Card.Text className="heading text-danger">Rp. {price}</Card.Text>
           <Button
-            variant="brown"
+            variant="warning"
             size="sm"
             className="w-100"
             onClick={handleOrder}
