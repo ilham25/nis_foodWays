@@ -8,10 +8,12 @@
 .bg-grey {
   background-color: #efefef;
 }
+.btn {
+  font-size: 0.9em !important;
+}
 .btn-brown {
   background-color: #433434;
   color: white;
-  font-size: 0.9em;
   font-weight: 500;
 }
 .btn-brown:hover {
@@ -26,7 +28,35 @@
   background-color: #433434;
 }
 
+.text-green {
+  color: #00ff75;
+  font-size: 0.9em;
+}
+.text-green:hover {
+  color: #00ff75;
+}
+.btn-green {
+  background-color: #00ff7717 !important;
+}
+.btn-green:hover {
+  background-color: #00ff7729 !important;
+}
+.btn-success {
+  background-color: #00ff75 !important;
+}
+
+.btn-danger {
+  background-color: #ff0742 !important;
+}
+.text-danger {
+  color: #ff0742 !important;
+}
 .map-container {
   width: 100%;
   height: 70vh;
+}
+.custom-modal {
+  width: 90vw !important;
+  top: 15%;
+  max-width: none !important;
 }

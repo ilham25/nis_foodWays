@@ -1,7 +1,7 @@
 import { Nav, Navbar, Button, Container, Dropdown } from "react-bootstrap";
 import { Link, useHistory } from "react-router-dom";
 // SVGs
-import deliverer from "../assets/svg/deliver.svg";
+import brandLogo from "../assets/svg/brand.svg";
 import iconProfile from "../assets/svg/profile.svg";
 import iconAddProduct from "../assets/svg/addproduct.svg";
 import iconLogout from "../assets/svg/logout.svg";
@@ -17,7 +17,6 @@ export default function Header({
   handleShowRegister,
   isUser,
   cartCounter,
-  setIsLogin,
 }) {
   const history = useHistory();
   const handleNavButton = () => {
@@ -88,7 +87,7 @@ export default function Header({
           </Dropdown.Toggle>
 
           <Dropdown.Menu style={{ position: "absolute", left: "-50px" }}>
-            <Dropdown.Item href="#!">
+            <Dropdown.Item as={Link} to="/profile">
               <img src={iconProfile} alt="profile icon" width="20" /> Profile
             </Dropdown.Item>
             {!isUser && (
@@ -110,8 +109,7 @@ export default function Header({
     <Navbar bg="warning" variant="light">
       <Container fluid className="px-3">
         <Navbar.Brand as={Link} to="/" className="brand-text font-weight-bold">
-          WaysFood
-          <img src={deliverer} alt="deliverer" width="40" className="ml-2" />
+          <img src={brandLogo} alt="brandLogo" height="40" className="ml-2" />
         </Navbar.Brand>
         <Nav className="mr-auto"></Nav>
 

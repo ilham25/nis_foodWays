@@ -23,9 +23,9 @@ export default function DetailProductPage({ setCartCounter, cartCounter }) {
       <Container>
         <Row>
           <Col>
-            <h2 className="heading font-weight-bold mb-4">
+            <h1 className="heading font-weight-bold mb-4">
               {menu && menu.title}, Menus
-            </h2>
+            </h1>
           </Col>
         </Row>
         <Row>

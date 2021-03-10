@@ -7,13 +7,9 @@ import {
   Button,
   Modal,
 } from "react-bootstrap";
-import { useState, useRef, useEffect } from "react";
+import { useState } from "react";
 import { useHistory } from "react-router-dom";
 import { isLogin } from "../../utils/auth";
-
-import mapboxgl from "mapbox-gl/dist/mapbox-gl-csp";
-// eslint-disable-next-line import/no-webpack-loader-syntax
-import MapboxWorker from "worker-loader!mapbox-gl/dist/mapbox-gl-csp-worker";
 
 import CartOrder from "../CartOrder";
 
@@ -21,28 +17,9 @@ import geprek1 from "../../assets/img/restaurant/bensu.png";
 import geprek2 from "../../assets/img/menu/geprek2.png";
 
 import iconMap from "../../assets/svg/map.svg";
+import iconMapPointer from "../../assets/svg/map-pointer.svg";
 
-mapboxgl.workerClass = MapboxWorker;
-mapboxgl.accessToken =
-  "pk.eyJ1IjoiaWxoYW0yNSIsImEiOiJja20yczc0dm0zOWczMndwMzVmdmJ1bjI4In0.1l2Zgxjy5R0iW2SlySO_fQ";
-
-function MapRender() {
-  const mapContainer = useRef(null);
-  const [lng, setLng] = useState(-70.9);
-  const [lat, setLat] = useState(42.35);
-  const [zoom, setZoom] = useState(9);
-
-  useEffect(() => {
-    const map = new mapboxgl.Map({
-      container: mapContainer.current,
-      style: "mapbox://styles/mapbox/streets-v11",
-      center: [lng, lat],
-      zoom: zoom,
-    });
-    return () => map.remove();
-  }, []);
-  return <div className="map-container" ref={mapContainer}></div>;
-}
+import MapModal from "../Modal/MapModal";
 
 export default function CartPage() {
   const dummyOrder = [
@@ -64,6 +41,11 @@ export default function CartPage() {
   const [show, setShow] = useState(false);
   const handleMapClose = () => setShow(false);
   const handleMapShow = () => setShow(true);
+
+  // Modal Handler
+  const [showDelivery, setShowDelivery] = useState(false);
+  const handleMapDeliveryClose = () => setShowDelivery(false);
+  const handleMapDeliveryShow = () => setShowDelivery(true);
 
   const [quantity, setQuantity] = useState(0);
 
@@ -159,7 +141,11 @@ export default function CartPage() {
             </Row>
             <Row className="mt-5">
               <Col className="text-right mt-5 pl-5">
-                <Button variant="brown" className="w-75">
+                <Button
+                  variant="brown"
+                  className="w-75"
+                  onClick={handleMapDeliveryShow}
+                >
                   See How Far ?
                 </Button>
               </Col>
@@ -167,23 +153,104 @@ export default function CartPage() {
           </Col>
         </Row>
       </Container>
+      <MapModal show={show} handleMapClose={handleMapClose}>
+        <div
+          className="shadow p-3 overflow-auto"
+          style={{
+            width: "400px",
+            height: "200px",
+            position: "absolute",
+            left: "50%",
+            bottom: "0",
+            backgroundColor: "white",
+            transform: "translateX(-50%)",
+            borderRadius: "5px",
+          }}
+        >
+          <Row className="mb-2">
+            <Col>
+              <h5 className="font-weight-bold mb-0">
+                Select delivery location
+              </h5>
+            </Col>
+          </Row>
+          <Row className="mb-3">
+            <Col md={2}>
+              <img src={iconMapPointer} alt="map pointer" width="55" />
+            </Col>
+            <Col md={10}>
+              <Row>
+                <Col md={12}>
+                  <small className="font-weight-bold">Harbour Building</small>
+                </Col>
 
-      <Modal show={show} onHide={handleMapClose} size="lg">
-        <Modal.Body style={{ position: "relative" }}>
-          <MapRender />
-          <div
-            style={{
-              width: "500px",
-              height: "300px",
-              position: "absolute",
-              left: "50%",
-              bottom: "0",
-              backgroundColor: "white",
-              transform: "translateX(-50%)",
-            }}
-          ></div>
-        </Modal.Body>
-      </Modal>
+                <Col md={12} style={{ lineHeight: "1" }}>
+                  <small className="text-sm">
+                    Jl. Elang IV No.48, Sawah Lama, Kec. Ciputat, Kota Tangerang
+                    Selatan, Banten 15413, Indonesia
+                  </small>
+                </Col>
+              </Row>
+            </Col>
+          </Row>
+          <Row>
+            <Col>
+              <Button variant="brown" className="w-100">
+                Confirm Location
+              </Button>
+            </Col>
+          </Row>
+        </div>
+      </MapModal>
+      <MapModal show={showDelivery} handleMapClose={handleMapDeliveryClose}>
+        <div
+          className="shadow p-3 overflow-auto"
+          style={{
+            width: "500px",
+            height: "350px",
+            position: "absolute",
+            right: "30px",
+            top: "30px",
+            backgroundColor: "white",
+            borderRadius: "5px",
+          }}
+        >
+          <Row className="mb-4">
+            <Col>
+              <h5 className="font-weight-bold mb-0">
+                Waiting for the transaction to be approved
+              </h5>
+            </Col>
+          </Row>
+          <Row className="mb-5">
+            <Col md={2}>
+              <img src={iconMapPointer} alt="map pointer" width="55" />
+            </Col>
+            <Col md={10}>
+              <Row>
+                <Col md={12}>
+                  <small className="font-weight-bold">Harbour Building</small>
+                </Col>
+
+                <Col md={12} style={{ lineHeight: "1" }}>
+                  <small className="text-sm">
+                    Jl. Elang IV No.48, Sawah Lama, Kec. Ciputat, Kota Tangerang
+                    Selatan, Banten 15413, Indonesia
+                  </small>
+                </Col>
+              </Row>
+            </Col>
+          </Row>
+          <Row>
+            <Col md={12} className="mb-4">
+              <h5 className="font-weight-bold mb-0">Delivery Time</h5>
+            </Col>
+            <Col>
+              <p>10 - 15 minutes</p>
+            </Col>
+          </Row>
+        </div>
+      </MapModal>
     </div>
   );
 }
