@@ -1,5 +1,6 @@
 import { Nav, Navbar, Button, Container, Dropdown } from "react-bootstrap";
 import { Link, useHistory } from "react-router-dom";
+import { useEffect, useState } from "react";
 // SVGs
 import brandLogo from "../assets/svg/brand.svg";
 import iconProfile from "../assets/svg/profile.svg";
@@ -19,6 +20,7 @@ export default function Header({
   cartCounter,
 }) {
   const history = useHistory();
+  const [checkLogin, setCheckLogin] = useState(true);
   const handleNavButton = () => {
     return (
       <>
@@ -34,8 +36,8 @@ export default function Header({
 
   const handleProfileButton = () => {
     const handleLogout = () => {
-      history.push("/");
       logout();
+      setCheckLogin(false);
     };
 
     return (

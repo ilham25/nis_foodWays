@@ -1,4 +1,5 @@
 import { Container, Row, Col, Card, Button } from "react-bootstrap";
+import { Link } from "react-router-dom";
 
 import imgProfileBig from "../../assets/img/profile-big.png";
 
@@ -57,7 +58,13 @@ function ProfilePage() {
             </Row>
             <Row>
               <Col md={4}>
-                <Button variant="brown" className="w-100" size="lg">
+                <Button
+                  as={Link}
+                  to="/profile/edit"
+                  variant="brown"
+                  className="w-100"
+                  size="lg"
+                >
                   Edit Profile
                 </Button>
               </Col>

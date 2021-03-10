@@ -8,6 +8,7 @@ import Header from "./components/Header";
 import DetailProductPage from "./components/pages/DetailProductPage";
 import CartPage from "./components/pages/CartPage";
 import ProfilePage from "./components/pages/ProfilePage";
+import EditProfilePage from "./components/pages/EditProfilePage";
 
 function App() {
   // isLogin
@@ -51,6 +52,9 @@ function App() {
         </Route>
         <Route exact path="/profile">
           <ProfilePage />
+        </Route>
+        <Route exact path="/profile/edit">
+          <EditProfilePage />
         </Route>
       </Switch>
       <LoginModal
