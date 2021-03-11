@@ -43,7 +43,7 @@ function IncomePage() {
       case 1:
         return (
           <div>
-            <Button size="sm" variant="danger" className="mr-2">
+            <Button size="sm" variant="danger" className="mr-0 mr-lg-2">
               Cancel
             </Button>
             <Button size="sm" variant="success">
