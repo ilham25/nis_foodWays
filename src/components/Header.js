@@ -98,19 +98,14 @@ export default function Header({
             style={{ position: "absolute", left: "-100px", fontSize: "1.2em" }}
           >
             <Dropdown.Item as={Link} to="/profile" className="py-2">
-              <img
-                src={iconProfile}
-                alt="profile icon"
-                width="30"
-                className="mr-2"
-              />{" "}
+              <img src={iconProfile} alt="icon" width="30" className="mr-2" />{" "}
               Profile
             </Dropdown.Item>
             {currentUser.userrole == 1 && (
               <Dropdown.Item as={Link} to="/add" className="py-2">
                 <img
                   src={iconAddProduct}
-                  alt="profile icon"
+                  alt="add product icon"
                   width="30"
                   className="mr-2"
                 />{" "}
@@ -121,7 +116,7 @@ export default function Header({
             <Dropdown.Item href="#!" onClick={handleLogout} className="py-2">
               <img
                 src={iconLogout}
-                alt="profile icon"
+                alt="logout icon"
                 className="mr-2"
                 width="30"
                 style={{ objectFit: "cover" }}
