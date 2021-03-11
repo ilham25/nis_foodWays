@@ -49,6 +49,8 @@ export default function CartPage() {
 
   const [quantity, setQuantity] = useState(0);
 
+  const [isFinished, setIsFinished] = useState(true);
+
   const history = useHistory();
   if (!isLogin()) {
     history.push("/");
@@ -146,7 +148,7 @@ export default function CartPage() {
                   className="w-75"
                   onClick={handleMapDeliveryShow}
                 >
-                  See How Far ?
+                  Order
                 </Button>
               </Col>
             </Row>
@@ -249,6 +251,15 @@ export default function CartPage() {
               <p>10 - 15 minutes</p>
             </Col>
           </Row>
+          {isFinished && (
+            <Row className="mt-4">
+              <Col md={12}>
+                <Button variant="brown" className="w-100">
+                  Finished Order
+                </Button>
+              </Col>
+            </Row>
+          )}
         </div>
       </MapModal>
     </div>
