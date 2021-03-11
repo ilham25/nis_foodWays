@@ -16,6 +16,14 @@ import actionCancel from "../../assets/svg/action-cancel.svg";
 function IncomePage() {
   const history = useHistory();
 
+  /**
+   *
+   * Parameters :
+   * - 0 for "Cancel"
+   * - 1 for "Waiting Approve"
+   * - 2 for "On The Way"
+   * - 3 for "Success"
+   */
   const handleStatus = (status) => {
     switch (status) {
       case 0:
@@ -28,7 +36,7 @@ function IncomePage() {
         return <p className="text-info">On The Way</p>;
         break;
       case 3:
-        return <p className="text-success">Cancel</p>;
+        return <p className="text-success">Success</p>;
         break;
 
       default:
