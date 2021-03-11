@@ -67,51 +67,46 @@ function IncomePage() {
     <div className="bg-grey py-5 mt-4">
       <Container>
         <Row className="mb-4">
-          <Col>
+          <Col xs={12}>
             <h1 className="heading font-weight-bold">Income Transaction</h1>
           </Col>
         </Row>
         <Row>
-          <Col md={12}>
-            <Table
-              bordered
-              style={{ backgroundColor: "white", borderColor: "#828282" }}
-            >
-              <thead style={{ backgroundColor: "#E5E5E5" }}>
-                <tr>
-                  <th>No</th>
-                  <th>Name</th>
-                  <th>Address</th>
-                  <th>Products Order</th>
-                  <th>Status</th>
-                  <th>Action</th>
-                </tr>
-              </thead>
-              <tbody>
-                {/* <tr>
-                  <td>1</td>
-                  <td>Sugeng</td>
-                  <td>Otto</td>
-                  <td>@mdo</td>
-                  <td>aowkeoak</td>
-                  <td>aowkeoak</td>
-                </tr> */}
-                {dummyIncome.map((income, index) => (
+          <Col lg={12} className="table-responsive-xs">
+            <div className="table-responsive">
+              <Table
+                bordered
+                style={{ backgroundColor: "white", borderColor: "#828282" }}
+                className="overflow-auto"
+              >
+                <thead style={{ backgroundColor: "#E5E5E5" }}>
                   <tr>
-                    <td>{index + 1}</td>
-                    <td>{income.name}</td>
-                    <td>{income.address}</td>
-                    <td>{income.products}</td>
-                    <td className="text-center">
-                      {handleStatus(income.status)}
-                    </td>
-                    <td className="text-center">
-                      {handleAction(income.status)}
-                    </td>
+                    <th>No</th>
+                    <th>Name</th>
+                    <th>Address</th>
+                    <th>Products Order</th>
+                    <th>Status</th>
+                    <th>Action</th>
                   </tr>
-                ))}
-              </tbody>
-            </Table>
+                </thead>
+                <tbody>
+                  {dummyIncome.map((income, index) => (
+                    <tr>
+                      <td>{index + 1}</td>
+                      <td>{income.name}</td>
+                      <td>{income.address}</td>
+                      <td>{income.products}</td>
+                      <td className="text-center">
+                        {handleStatus(income.status)}
+                      </td>
+                      <td className="text-center">
+                        {handleAction(income.status)}
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </Table>
+            </div>
           </Col>
         </Row>
       </Container>

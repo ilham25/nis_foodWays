@@ -21,13 +21,21 @@ export default function RestaurantCard({
   };
   return (
     <Col
-      md={3}
+      xs={12}
+      md={6}
+      lg={3}
       className="mb-4"
       style={{ cursor: "pointer" }}
       onClick={handleClick}
     >
       <Card style={{ border: "none" }}>
-        <Card.Img variant="top" src={photo} height="134" className="p-2" />
+        <Card.Img
+          variant="top"
+          src={photo}
+          height="134"
+          className="p-2"
+          style={{ objectFit: "cover" }}
+        />
         <Card.Body>
           <Card.Title className="heading font-weight-bolder">
             {title}

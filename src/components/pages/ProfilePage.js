@@ -23,25 +23,21 @@ function ProfilePage() {
     <div className="bg-grey py-5 mt-4">
       <Container>
         <Row className="mb-4">
-          <Col md={7}>
+          <Col xs={12} md={12} lg={7}>
             <Row className="mb-4">
               <Col>
                 <h1 className="heading font-weight-bold">My Profile</h1>
               </Col>
             </Row>
-            <Row className="mb-4">
-              <Col md={4}>
-                <Row>
-                  <Col>
-                    <img
-                      src={userrole ? bensu : imgProfileBig}
-                      alt="profile photo"
-                      className="w-100"
-                      height="222"
-                      style={{ borderRadius: "5px", objectFit: "cover" }}
-                    />
-                  </Col>
-                </Row>
+            <Row className="mb-2">
+              <Col sm={12} md={4}>
+                <img
+                  src={userrole ? bensu : imgProfileBig}
+                  alt="profile photo"
+                  className="w-100 mb-4 mb-sm-0"
+                  height="222"
+                  style={{ borderRadius: "5px", objectFit: "cover" }}
+                />
               </Col>
               <Col md={8}>
                 <Row className="mb-2">
@@ -70,7 +66,7 @@ function ProfilePage() {
                 </Row>
               </Col>
             </Row>
-            <Row>
+            <Row className="mb-4 mb-0">
               <Col md={4}>
                 <Button
                   as={Link}
@@ -84,7 +80,7 @@ function ProfilePage() {
               </Col>
             </Row>
           </Col>
-          <Col md={5}>
+          <Col xs={12} md={12} lg={5}>
             <Row className="mb-4">
               <Col>
                 <h1 className="heading font-weight-bold">

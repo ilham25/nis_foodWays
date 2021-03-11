@@ -24,20 +24,22 @@ function EditProfilePage() {
     <div className="bg-grey py-5 mt-4">
       <Container>
         <Row className="mb-4">
-          <h1 className="heading font-weight-bold">
-            Edit Profile {currentUser.userrole == 1 && "Partner"}
-          </h1>
+          <Col xs={12}>
+            <h1 className="heading font-weight-bold">
+              Edit Profile {currentUser.userrole == 1 && "Partner"}
+            </h1>
+          </Col>
         </Row>
         <Row>
-          <Col className="pl-0">
+          <Col className="">
             <Form onSubmit={handleSubmit}>
               <Row>
-                <Col md={9}>
+                <Col xs={12} lg={9}>
                   <Form.Group>
                     <Form.Control type="text" placeholder="Full Name" />
                   </Form.Group>
                 </Col>
-                <Col className="pl-0">
+                <Col xs={12} lg={3}>
                   <Form.Group>
                     <Form.File label="Attach image" data-browse="📎" custom />
                   </Form.Group>
@@ -45,26 +47,26 @@ function EditProfilePage() {
               </Row>
 
               <Row>
-                <Col md={12}>
+                <Col xs={12} lg={12}>
                   <Form.Group>
                     <Form.Control type="email" placeholder="Email" />
                   </Form.Group>
                 </Col>
               </Row>
               <Row>
-                <Col md={12}>
+                <Col xs={12} lg={12}>
                   <Form.Group>
                     <Form.Control type="password" placeholder="Password" />
                   </Form.Group>
                 </Col>
               </Row>
               <Row>
-                <Col md={9}>
+                <Col xs={12} lg={9}>
                   <Form.Group>
                     <Form.Control type="text" placeholder="Location" />
                   </Form.Group>
                 </Col>
-                <Col>
+                <Col xs={12} lg={3}>
                   <Button
                     variant="brown"
                     className="w-100"
@@ -77,7 +79,7 @@ function EditProfilePage() {
                 </Col>
               </Row>
               <Row className="mt-5">
-                <Col md={12} className="text-right">
+                <Col lg={12} className="text-right">
                   <Button variant="brown" className="w-25" type="submit">
                     Save
                   </Button>
@@ -107,16 +109,16 @@ function EditProfilePage() {
             </Col>
           </Row>
           <Row className="mb-3">
-            <Col md={2}>
+            <Col lg={2}>
               <img src={iconMapPointer} alt="map pointer" width="55" />
             </Col>
-            <Col md={10}>
+            <Col lg={10}>
               <Row>
-                <Col md={12}>
+                <Col lg={12}>
                   <small className="font-weight-bold">Harbour Building</small>
                 </Col>
 
-                <Col md={12} style={{ lineHeight: "1" }}>
+                <Col lg={12} style={{ lineHeight: "1" }}>
                   <small className="text-sm">
                     Jl. Elang IV No.48, Sawah Lama, Kec. Ciputat, Kota Tangerang
                     Selatan, Banten 15413, Indonesia

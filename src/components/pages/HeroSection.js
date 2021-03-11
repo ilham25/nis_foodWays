@@ -7,7 +7,7 @@ export default function HeroSection() {
     <div className="py-5 bg-warning">
       <Container>
         <Row>
-          <Col className="py-5">
+          <Col xs={12} md={6} className="py-5">
             <h1 className="heading display-4 font-weight-bold">
               Are you Hungry ?
             </h1>
@@ -28,8 +28,8 @@ export default function HeroSection() {
               </div>
             </div>
           </Col>
-          <Col>
-            <img src={pizza} alt="pizza" width="400" />
+          <Col xs={6} md={6} className="text-center">
+            <img src={pizza} alt="pizza" className="w-75 w-lg-100" />
           </Col>
         </Row>
       </Container>

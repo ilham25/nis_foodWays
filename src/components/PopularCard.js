@@ -2,13 +2,13 @@ import { Container, Col, Row } from "react-bootstrap";
 
 export default function PopularCard({ logo, title }) {
   return (
-    <Col md={3}>
+    <Col xs={12} md={6} lg={3} className="mb-3">
       <Container>
         <Row className="bg-white py-3" style={{ borderRadius: 5 }}>
-          <Col md={3}>
-            <img src={logo} alt="burger king" width="65" />
+          <Col xs={3} className="text-center">
+            <img src={logo} alt="burger king" />
           </Col>
-          <Col md={9} className="my-auto text-center">
+          <Col xs={9} className="my-auto text-center">
             <h3 className="heading my-0 font-weight-bold">{title}</h3>
           </Col>
         </Row>

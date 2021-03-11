@@ -22,7 +22,7 @@ export default function DetailProductPage({ setCartCounter, cartCounter }) {
     <div className="bg-grey py-5 mt-4">
       <Container>
         <Row>
-          <Col>
+          <Col xs={12}>
             <h1 className="heading font-weight-bold mb-4">
               {menu && menu.title}, Menus
             </h1>

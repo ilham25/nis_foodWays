@@ -13,24 +13,25 @@ function AddProductPage() {
   const handleSubmit = (e) => {
     e.preventDefault();
     handleShow();
-    // history.push("/profile");
   };
   return (
     <div className="bg-grey py-5 mt-4">
       <Container>
         <Row className="mb-4">
-          <h1 className="heading font-weight-bold">Add Product</h1>
+          <Col xs={12}>
+            <h1 className="heading font-weight-bold">Add Product</h1>
+          </Col>
         </Row>
         <Row>
-          <Col className="pl-0">
+          <Col>
             <Form onSubmit={handleSubmit}>
               <Row>
-                <Col md={9}>
+                <Col xs={12} lg={9}>
                   <Form.Group>
                     <Form.Control type="text" placeholder="Title" />
                   </Form.Group>
                 </Col>
-                <Col className="pl-0">
+                <Col xs={12} lg={3}>
                   <Form.Group>
                     <Form.File label="Attach image" data-browse="📎" custom />
                   </Form.Group>
@@ -38,7 +39,7 @@ function AddProductPage() {
               </Row>
 
               <Row>
-                <Col md={12}>
+                <Col xs={12} lg={12}>
                   <Form.Group>
                     <Form.Control type="text" placeholder="Price" />
                   </Form.Group>
@@ -46,7 +47,7 @@ function AddProductPage() {
               </Row>
 
               <Row className="mt-2">
-                <Col md={12} className="text-right">
+                <Col xs={12} lg={12} className="text-right">
                   <Button variant="brown" className="w-25" type="submit">
                     Save
                   </Button>

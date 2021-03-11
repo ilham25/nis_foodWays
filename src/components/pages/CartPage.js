@@ -61,13 +61,17 @@ export default function CartPage() {
     <div className="bg-grey py-5 mt-4">
       <Container>
         <Row className="mb-4">
-          <h1 className="heading font-weight-bold">Geprek Bensu</h1>
+          <Col sm={12}>
+            <h1 className="heading font-weight-bold">Geprek Bensu</h1>
+          </Col>
         </Row>
         <Row>
-          <h5 className="text-brown font-weight-normal">Deliver Location</h5>
+          <Col sm={12}>
+            <h5 className="text-brown font-weight-normal">Deliver Location</h5>
+          </Col>
         </Row>
         <Row className="mb-4">
-          <Col md={9} className="pl-0">
+          <Col sm={12} lg={9} className="mb-2">
             <InputGroup>
               <FormControl
                 value="Harbour Building"
@@ -76,7 +80,7 @@ export default function CartPage() {
               />
             </InputGroup>
           </Col>
-          <Col md={3}>
+          <Col sm={12} lg={3}>
             <Button
               variant="brown"
               className="w-100"
@@ -89,10 +93,12 @@ export default function CartPage() {
           </Col>
         </Row>
         <Row>
-          <h5 className="text-brown font-weight-normal">Review your order</h5>
+          <Col sm={12}>
+            <h5 className="text-brown font-weight-normal">Review your order</h5>
+          </Col>
         </Row>
         <Row>
-          <Col md={7} className="pl-0">
+          <Col sm={12} lg={7}>
             <hr className="divider" />
 
             {dummyOrder.map((order) => (
@@ -104,48 +110,48 @@ export default function CartPage() {
               />
             ))}
           </Col>
-          <Col md={5}>
-            <hr className="divider" />
+          <Col lg={5}>
+            <hr className="divider d-none d-lg-block" />
             <Row>
-              <Col md={6}>
+              <Col xs={6} lg={6}>
                 <p>Subtotal</p>
               </Col>
-              <Col md={6}>
+              <Col xs={6} lg={6}>
                 <p className="text-right text-danger">Rp. 35.000</p>
               </Col>
             </Row>
             <Row>
-              <Col md={6}>
+              <Col xs={6} lg={6}>
                 <p>Qty</p>
               </Col>
-              <Col md={6}>
+              <Col xs={6} lg={6}>
                 <p className="text-right">{quantity}</p>
               </Col>
             </Row>
             <Row className="pb-0">
-              <Col md={6}>
+              <Col xs={6} lg={6}>
                 <p className="mb-0">Ongkir</p>
               </Col>
-              <Col md={6}>
+              <Col xs={6} lg={6}>
                 <p className="text-right text-danger mb-0">Rp. 10.000</p>
               </Col>
             </Row>
             <hr className="divider" />
             <Row className="pb-0">
-              <Col md={6}>
+              <Col xs={6} lg={6}>
                 <p className="mb-0 text-danger font-weight-bold">Total</p>
               </Col>
-              <Col md={6}>
+              <Col xs={6} lg={6}>
                 <p className="text-right text-danger font-weight-bold mb-0">
                   Rp. 45.000
                 </p>
               </Col>
             </Row>
-            <Row className="mt-5">
-              <Col className="text-right mt-5 pl-5">
+            <Row className="mt-5 justify-content-end">
+              <Col sm={8} className="text-right mt-5">
                 <Button
                   variant="brown"
-                  className="w-75"
+                  className="w-100 "
                   onClick={handleMapDeliveryShow}
                 >
                   Order
@@ -177,16 +183,16 @@ export default function CartPage() {
             </Col>
           </Row>
           <Row className="mb-3">
-            <Col md={2}>
+            <Col lg={2}>
               <img src={iconMapPointer} alt="map pointer" width="55" />
             </Col>
-            <Col md={10}>
+            <Col lg={10}>
               <Row>
-                <Col md={12}>
+                <Col lg={12}>
                   <small className="font-weight-bold">Harbour Building</small>
                 </Col>
 
-                <Col md={12} style={{ lineHeight: "1" }}>
+                <Col lg={12} style={{ lineHeight: "1" }}>
                   <small className="text-sm">
                     Jl. Elang IV No.48, Sawah Lama, Kec. Ciputat, Kota Tangerang
                     Selatan, Banten 15413, Indonesia
@@ -225,16 +231,16 @@ export default function CartPage() {
             </Col>
           </Row>
           <Row className="mb-5">
-            <Col md={2}>
+            <Col lg={2}>
               <img src={iconMapPointer} alt="map pointer" width="55" />
             </Col>
-            <Col md={10}>
+            <Col lg={10}>
               <Row>
-                <Col md={12}>
+                <Col lg={12}>
                   <small className="font-weight-bold">Harbour Building</small>
                 </Col>
 
-                <Col md={12} style={{ lineHeight: "1" }}>
+                <Col lg={12} style={{ lineHeight: "1" }}>
                   <small className="text-sm">
                     Jl. Elang IV No.48, Sawah Lama, Kec. Ciputat, Kota Tangerang
                     Selatan, Banten 15413, Indonesia
@@ -244,7 +250,7 @@ export default function CartPage() {
             </Col>
           </Row>
           <Row>
-            <Col md={12} className="mb-4">
+            <Col lg={12} className="mb-4">
               <h5 className="font-weight-bold mb-0">Delivery Time</h5>
             </Col>
             <Col>
@@ -253,7 +259,7 @@ export default function CartPage() {
           </Row>
           {isFinished && (
             <Row className="mt-4">
-              <Col md={12}>
+              <Col lg={12}>
                 <Button variant="brown" className="w-100">
                   Finished Order
                 </Button>

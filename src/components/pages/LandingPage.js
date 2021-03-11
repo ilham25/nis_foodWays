@@ -17,7 +17,7 @@ export default function LandingPage({
       <div className="bg-grey">
         <Container className="py-5">
           <Row>
-            <Col>
+            <Col sm={12}>
               <h2 className="heading font-weight-bold mb-4">
                 Popular Restaurant
               </h2>
@@ -33,7 +33,7 @@ export default function LandingPage({
             ))}
           </Row>
           <Row>
-            <Col>
+            <Col sm={12}>
               <h2 className="heading font-weight-bold mb-4">
                 Restaurant Near You
               </h2>

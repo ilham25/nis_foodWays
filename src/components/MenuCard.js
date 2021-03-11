@@ -11,7 +11,7 @@ export default function MenuCard({
     setCartCounter(cartCounter + 1);
   };
   return (
-    <Col md={3} className="mb-4">
+    <Col xs={12} md={4} lg={3} className="mb-4">
       <Card style={{ border: "none" }}>
         <Card.Img variant="top" src={photo} height="134" className="p-2" />
         <Card.Body>
