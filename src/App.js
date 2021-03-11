@@ -9,6 +9,7 @@ import DetailProductPage from "./components/pages/DetailProductPage";
 import CartPage from "./components/pages/CartPage";
 import ProfilePage from "./components/pages/ProfilePage";
 import AddProductPage from "./components/pages/AddProductPage";
+import IncomePage from "./components/pages/IncomePage";
 import EditProfilePage from "./components/pages/EditProfilePage";
 
 function App() {
@@ -60,6 +61,9 @@ function App() {
         </Route>
         <Route exact path="/add">
           <AddProductPage />
+        </Route>
+        <Route exact path="/income">
+          <IncomePage />
         </Route>
       </Switch>
       <LoginModal

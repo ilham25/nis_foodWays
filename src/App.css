@@ -41,9 +41,6 @@
 .btn-green:hover {
   background-color: #00ff7729 !important;
 }
-.btn-success {
-  background-color: #00ff75 !important;
-}
 
 .btn-danger {
   background-color: #ff0742 !important;
@@ -63,4 +60,13 @@
 
 .custom-input {
   font-size: 0.9em;
+}
+
+.table-bordered > tbody > tr > td,
+.table-bordered > tbody > tr > th,
+.table-bordered > tfoot > tr > td,
+.table-bordered > tfoot > tr > th,
+.table-bordered > thead > tr > td,
+.table-bordered > thead > tr > th {
+  border: 1px solid #828282;
 }

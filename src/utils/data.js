@@ -173,3 +173,34 @@ export const dummyRestaurant = [
     menu: [],
   },
 ];
+
+export const dummyIncome = [
+  {
+    id: 1,
+    name: "Sugeng No Pants",
+    address: "Cileungsi",
+    products: "Paket Geprek, Paket ke..",
+    status: 1,
+  },
+  {
+    id: 2,
+    name: "Haris Gams",
+    address: "Serang",
+    products: "Paket Geprek, Paket ke..",
+    status: 3,
+  },
+  {
+    id: 3,
+    name: "Aziz Union",
+    address: "Bekasi",
+    products: "Paket Geprek, Paket ke..",
+    status: 0,
+  },
+  {
+    id: 4,
+    name: "Lae Tanjung Balai",
+    address: "Tanjung Balai",
+    products: "Paket Geprek, Paket ke..",
+    status: 2,
+  },
+];
