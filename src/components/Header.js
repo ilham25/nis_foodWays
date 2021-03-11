@@ -94,22 +94,36 @@ export default function Header({
             />
           </Dropdown.Toggle>
 
-          <Dropdown.Menu style={{ position: "absolute", left: "-50px" }}>
-            <Dropdown.Item as={Link} to="/profile">
-              <img src={iconProfile} alt="profile icon" width="20" /> Profile
+          <Dropdown.Menu
+            style={{ position: "absolute", left: "-100px", fontSize: "1.2em" }}
+          >
+            <Dropdown.Item as={Link} to="/profile" className="py-2">
+              <img
+                src={iconProfile}
+                alt="profile icon"
+                width="30"
+                className="mr-2"
+              />{" "}
+              Profile
             </Dropdown.Item>
             {currentUser.userrole == 1 && (
-              <Dropdown.Item as={Link} to="/add">
-                <img src={iconAddProduct} alt="profile icon" width="20" /> Add
-                Product
+              <Dropdown.Item as={Link} to="/add" className="py-2">
+                <img
+                  src={iconAddProduct}
+                  alt="profile icon"
+                  width="30"
+                  className="mr-2"
+                />{" "}
+                Add Product
               </Dropdown.Item>
             )}
             <Dropdown.Divider />
-            <Dropdown.Item href="#!" onClick={handleLogout}>
+            <Dropdown.Item href="#!" onClick={handleLogout} className="py-2">
               <img
                 src={iconLogout}
                 alt="profile icon"
-                width="20"
+                className="mr-2"
+                width="30"
                 style={{ objectFit: "cover" }}
               />{" "}
               Logout
