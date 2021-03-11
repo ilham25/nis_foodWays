@@ -1,11 +1,12 @@
 import { Modal, Button, Form } from "react-bootstrap";
 import { useHistory } from "react-router-dom";
-import { login } from "../../utils/auth";
+import { isLogin, login } from "../../utils/auth";
 
 export default function LoginModal({
   showLogin,
   handleCloseLogin,
   handleShowRegister,
+  setCheckLogin,
 }) {
   const history = useHistory();
   const openRegister = () => {
@@ -21,6 +22,7 @@ export default function LoginModal({
     };
     if (login(userData)) {
       history.push("/");
+      setCheckLogin(isLogin());
       handleCloseLogin();
     }
   };

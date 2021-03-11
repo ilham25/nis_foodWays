@@ -19,12 +19,14 @@ export default function Header({
   handleShowRegister,
   isUser,
   cartCounter,
+  checkLogin,
+  setCheckLogin,
 }) {
   const history = useHistory();
-  const [checkLogin, setCheckLogin] = useState(true);
 
   const currentUser = JSON.parse(localStorage.getItem("ways-food-user-login"));
 
+  const [cek, setCek] = useState("njir");
   const handleNavButton = () => {
     return (
       <>
@@ -38,13 +40,17 @@ export default function Header({
     );
   };
 
-  const handleProfileButton = () => {
-    const handleLogout = () => {
-      logout();
-      setCheckLogin(false);
-      history.push("/");
-    };
+  useEffect(() => {
+    console.log("header state");
+  });
 
+  const handleLogout = () => {
+    setCek("oawkeok");
+    logout();
+    setCheckLogin(isLogin());
+    history.push("/");
+  };
+  const handleProfileButton = () => {
     return (
       <>
         <Link to="/cart">
@@ -136,7 +142,7 @@ export default function Header({
         </Navbar.Brand>
         <Nav className="mr-auto"></Nav>
 
-        {isLogin() ? handleProfileButton() : handleNavButton()}
+        {checkLogin ? handleProfileButton() : handleNavButton()}
       </Container>
     </Navbar>
   );

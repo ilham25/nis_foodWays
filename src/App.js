@@ -1,5 +1,5 @@
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 import LoginModal from "./components/Modal/LoginModal";
 import RegisterModal from "./components/Modal/RegisterModal";
@@ -11,6 +11,8 @@ import ProfilePage from "./components/pages/ProfilePage";
 import AddProductPage from "./components/pages/AddProductPage";
 import IncomePage from "./components/pages/IncomePage";
 import EditProfilePage from "./components/pages/EditProfilePage";
+
+import { isLogin } from "./utils/auth";
 
 function App() {
   // isLogin
@@ -29,8 +31,12 @@ function App() {
   // Cart stuff
   const [cartCounter, setCartCounter] = useState(0);
 
-  // Fake router
+  // Fake login
+  const [checkLogin, setCheckLogin] = useState(isLogin());
 
+  useEffect(() => {
+    console.log("app state");
+  });
   return (
     <Router>
       <Header
@@ -38,6 +44,8 @@ function App() {
         handleShowRegister={handleShowRegister}
         isUser={isUser}
         cartCounter={cartCounter}
+        checkLogin={checkLogin}
+        setCheckLogin={setCheckLogin}
       />
       <Switch>
         <Route exact path="/">
@@ -70,6 +78,7 @@ function App() {
         handleCloseLogin={handleCloseLogin}
         handleShowRegister={handleShowRegister}
         showLogin={showLogin}
+        setCheckLogin={setCheckLogin}
       />
       <RegisterModal
         handleCloseRegister={handleCloseRegister}
