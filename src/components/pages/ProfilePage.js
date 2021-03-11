@@ -2,10 +2,23 @@ import { Container, Row, Col, Card, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
 import imgProfileBig from "../../assets/img/profile-big.png";
+import bensu from "../../assets/img/restaurant/bensu.png";
 
 import HistoryCard from "../HistoryCard";
 
 function ProfilePage() {
+  const currentUser = JSON.parse(localStorage.getItem("ways-food-user-login"));
+  const {
+    id,
+    email,
+    password,
+    fullname,
+    gender,
+    phone,
+    userrole,
+  } = currentUser;
+
+  console.log(currentUser);
   return (
     <div className="bg-grey py-5 mt-4">
       <Container>
@@ -21,10 +34,11 @@ function ProfilePage() {
                 <Row>
                   <Col>
                     <img
-                      src={imgProfileBig}
+                      src={userrole ? bensu : imgProfileBig}
                       alt="profile photo"
                       className="w-100"
-                      style={{ borderRadius: "5px" }}
+                      height="222"
+                      style={{ borderRadius: "5px", objectFit: "cover" }}
                     />
                   </Col>
                 </Row>
@@ -74,12 +88,12 @@ function ProfilePage() {
             <Row className="mb-4">
               <Col>
                 <h1 className="heading font-weight-bold">
-                  History Transaction
+                  History {userrole ? "Order" : "Transaction"}
                 </h1>
               </Col>
             </Row>
             <Row>
-              <HistoryCard />
+              <HistoryCard userrole={userrole} />
             </Row>
           </Col>
         </Row>

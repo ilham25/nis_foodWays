@@ -15,7 +15,7 @@ export const register = (data) => {
     fullname,
     gender,
     phone,
-    userrole,
+    userrole: userrole === "As Partner" ? 1 : 0,
     photo: imgProfile,
   };
   const tempData = [...localData, userData];

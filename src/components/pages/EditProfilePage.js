@@ -9,6 +9,7 @@ import MapModal from "../Modal/MapModal";
 
 function EditProfilePage() {
   const history = useHistory();
+  const currentUser = JSON.parse(localStorage.getItem("ways-food-user-login"));
 
   // Modal Handler
   const [show, setShow] = useState(false);
@@ -23,7 +24,9 @@ function EditProfilePage() {
     <div className="bg-grey py-5 mt-4">
       <Container>
         <Row className="mb-4">
-          <h1 className="heading font-weight-bold">Edit Profile</h1>
+          <h1 className="heading font-weight-bold">
+            Edit Profile {currentUser.userrole == 1 && "Partner"}
+          </h1>
         </Row>
         <Row>
           <Col className="pl-0">

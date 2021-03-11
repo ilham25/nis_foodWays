@@ -10,6 +10,7 @@ import iconCart from "../assets/svg/cart.svg";
 
 // img
 import imgProfile from "../assets/img/profile.png";
+import bensu from "../assets/img/restaurant/bensu.png";
 
 import { isLogin, logout } from "../utils/auth";
 
@@ -21,6 +22,9 @@ export default function Header({
 }) {
   const history = useHistory();
   const [checkLogin, setCheckLogin] = useState(true);
+
+  const currentUser = JSON.parse(localStorage.getItem("ways-food-user-login"));
+
   const handleNavButton = () => {
     return (
       <>
@@ -38,6 +42,7 @@ export default function Header({
     const handleLogout = () => {
       logout();
       setCheckLogin(false);
+      history.push("/");
     };
 
     return (
@@ -81,10 +86,11 @@ export default function Header({
             }}
           >
             <img
-              src={imgProfile}
+              src={currentUser.userrole == 1 ? bensu : imgProfile}
               alt="photo"
               width="64"
-              style={{ borderRadius: "50%" }}
+              height="64"
+              style={{ borderRadius: "50%", objectFit: "cover" }}
             />
           </Dropdown.Toggle>
 
@@ -92,15 +98,21 @@ export default function Header({
             <Dropdown.Item as={Link} to="/profile">
               <img src={iconProfile} alt="profile icon" width="20" /> Profile
             </Dropdown.Item>
-            {!isUser && (
-              <Dropdown.Item href="#!">
+            {currentUser.userrole == 1 && (
+              <Dropdown.Item as={Link} to="/add">
                 <img src={iconAddProduct} alt="profile icon" width="20" /> Add
                 Product
               </Dropdown.Item>
             )}
             <Dropdown.Divider />
             <Dropdown.Item href="#!" onClick={handleLogout}>
-              <img src={iconLogout} alt="profile icon" width="20" /> Logout
+              <img
+                src={iconLogout}
+                alt="profile icon"
+                width="20"
+                style={{ objectFit: "cover" }}
+              />{" "}
+              Logout
             </Dropdown.Item>
           </Dropdown.Menu>
         </Dropdown>

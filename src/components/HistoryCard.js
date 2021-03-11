@@ -1,7 +1,7 @@
 import { Col, Card, Row, Button } from "react-bootstrap";
 import brandLogo from "../assets/svg/brand.svg";
 
-function HistoryCard() {
+function HistoryCard({ userrole }) {
   return (
     <Col md={12} className="mb-4">
       <Card style={{ border: "none" }}>
@@ -11,7 +11,7 @@ function HistoryCard() {
               <Row>
                 <Col>
                   <p className="heading font-weight-bold mb-1 h5">
-                    Geprek Bensu
+                    {userrole ? "Andi" : "Geprek Bensu"}
                   </p>
                   <small className="">
                     <span className="font-weight-bold">Saturday,</span> 12 March
