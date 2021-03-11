@@ -49,7 +49,7 @@ function ProfilePage() {
                     <h5 className="text-brown">Full Name</h5>
                   </Col>
                   <Col md={12}>
-                    <p>Andi</p>
+                    <p>{fullname}</p>
                   </Col>
                 </Row>
                 <Row className="mb-2">
@@ -57,7 +57,7 @@ function ProfilePage() {
                     <h5 className="text-brown">Email</h5>
                   </Col>
                   <Col md={12}>
-                    <p>andigans@gmail.com</p>
+                    <p>{email}</p>
                   </Col>
                 </Row>
                 <Row className="mb-2">
@@ -65,7 +65,7 @@ function ProfilePage() {
                     <h5 className="text-brown">Phone</h5>
                   </Col>
                   <Col md={12}>
-                    <p>083896833122</p>
+                    <p>{phone}</p>
                   </Col>
                 </Row>
               </Col>
