@@ -1,14 +1,37 @@
 import { Modal, Button, Form } from "react-bootstrap";
-import { register } from "../../utils/auth";
+
+import imgProfile from "../../assets/img/profile.png";
 
 export default function RegisterModal({
   showRegister,
   handleCloseRegister,
   handleShowLogin,
 }) {
+  const LOCAL_KEY = "ways-food-user";
+
   const openLogin = () => {
     handleCloseRegister();
     handleShowLogin();
+  };
+
+  const handleRegister = (data) => {
+    !localStorage.getItem(LOCAL_KEY) &&
+      localStorage.setItem(LOCAL_KEY, JSON.stringify([]));
+
+    const localData = JSON.parse(localStorage.getItem(LOCAL_KEY));
+    const { id, email, password, fullname, gender, phone, userrole } = data;
+    const userData = {
+      id,
+      email,
+      password,
+      fullname,
+      gender,
+      phone,
+      userrole: userrole === "As Partner" ? 1 : 0,
+      photo: imgProfile,
+    };
+    const tempData = [...localData, userData];
+    localStorage.setItem(LOCAL_KEY, JSON.stringify(tempData));
   };
 
   const handleSubmit = (e) => {
@@ -22,7 +45,7 @@ export default function RegisterModal({
       phone: e.target.phone.value,
       userrole: e.target.userrole.value,
     };
-    register(userData);
+    handleRegister(userData);
     openLogin();
   };
   return (

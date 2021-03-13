@@ -1,3 +1,5 @@
+import { useEffect, useContext } from "react";
+
 import {
   Container,
   Col,
@@ -13,12 +15,19 @@ import { dummyIncome } from "../../utils/data";
 import actionSuccess from "../../assets/svg/action-success.svg";
 import actionCancel from "../../assets/svg/action-cancel.svg";
 
+import { UserContext } from "../../contexts/userContext";
+
 function IncomePage() {
   const history = useHistory();
+  const [state, dispatch] = useContext(UserContext);
+
+  useEffect(() => {
+    state.loggedUser.userrole !== 1 && history.push("/");
+  }, []);
 
   /**
    *
-   * Parameters :
+   * status :
    * - 0 for "Cancel"
    * - 1 for "Waiting Approve"
    * - 2 for "On The Way"

@@ -1,7 +1,9 @@
+import { useContext } from "react";
+
 import { Col, Card } from "react-bootstrap";
 import { Link, useHistory } from "react-router-dom";
 
-import { isLogin } from "../utils/auth";
+import { UserContext } from "../contexts/userContext";
 
 export default function RestaurantCard({
   handleShowLogin,
@@ -11,8 +13,9 @@ export default function RestaurantCard({
   photo,
 }) {
   const history = useHistory();
+  const [state, dispatch] = useContext(UserContext);
   const handleClick = () => {
-    if (isLogin()) {
+    if (state.isLogin) {
       // alert("login");
       history.push(`/detail/${id}`);
     } else {
@@ -20,15 +23,8 @@ export default function RestaurantCard({
     }
   };
   return (
-    <Col
-      xs={12}
-      md={6}
-      lg={3}
-      className="mb-4"
-      style={{ cursor: "pointer" }}
-      onClick={handleClick}
-    >
-      <Card style={{ border: "none" }}>
+    <Col xs={12} md={6} lg={3} className="mb-4">
+      <Card style={{ border: "none", cursor: "pointer" }} onClick={handleClick}>
         <Card.Img
           variant="top"
           src={photo}

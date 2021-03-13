@@ -1,17 +1,42 @@
+import { useContext } from "react";
+
 import { Modal, Button, Form } from "react-bootstrap";
 import { useHistory } from "react-router-dom";
-import { isLogin, login } from "../../utils/auth";
+
+import { UserContext } from "../../contexts/userContext";
 
 export default function LoginModal({
   showLogin,
   handleCloseLogin,
   handleShowRegister,
-  setCheckLogin,
 }) {
   const history = useHistory();
+  const [state, dispatch] = useContext(UserContext);
+
+  const LOCAL_KEY = "ways-food-user";
+
   const openRegister = () => {
     handleCloseLogin();
     handleShowRegister();
+  };
+
+  const handleLogin = (data) => {
+    const userData = JSON.parse(localStorage.getItem(LOCAL_KEY));
+    const checkUser = userData.find((user) => user.email == data.email);
+    if (checkUser) {
+      if (checkUser.password == data.password) {
+        localStorage.setItem(`${LOCAL_KEY}-login`, JSON.stringify(checkUser));
+        dispatch({
+          type: "LOGIN",
+          payload: checkUser,
+        });
+        return true;
+      } else {
+        return false;
+      }
+    } else {
+      return false;
+    }
   };
 
   const handleSubmit = (e) => {
@@ -20,9 +45,9 @@ export default function LoginModal({
       email: e.target.email.value,
       password: e.target.password.value,
     };
-    if (login(userData)) {
+
+    if (handleLogin(userData)) {
       history.push("/");
-      setCheckLogin(isLogin());
       handleCloseLogin();
     }
   };

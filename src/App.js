@@ -1,8 +1,9 @@
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 
-import LoginModal from "./components/Modal/LoginModal";
-import RegisterModal from "./components/Modal/RegisterModal";
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+
+import LoginModal from "./components/modal/LoginModal";
+import RegisterModal from "./components/modal/RegisterModal";
 import LandingPage from "./components/pages/LandingPage";
 import Header from "./components/Header";
 import DetailProductPage from "./components/pages/DetailProductPage";
@@ -12,12 +13,10 @@ import AddProductPage from "./components/pages/AddProductPage";
 import IncomePage from "./components/pages/IncomePage";
 import EditProfilePage from "./components/pages/EditProfilePage";
 
-import { isLogin } from "./utils/auth";
+import { UserContextProvider } from "./contexts/userContext";
+import PrivateRoute from "./components/routes/PrivateRoute";
 
 function App() {
-  // isLogin
-  const [isUser, setIsUser] = useState(true);
-
   // Login modal stuff
   const [showLogin, setShowLogin] = useState(false);
   const handleCloseLogin = () => setShowLogin(false);
@@ -31,61 +30,50 @@ function App() {
   // Cart stuff
   const [cartCounter, setCartCounter] = useState(0);
 
-  // Fake login
-  const [checkLogin, setCheckLogin] = useState(isLogin());
-
-  useEffect(() => {
-    console.log("app state");
-  });
   return (
-    <Router>
-      <Header
-        handleShowLogin={handleShowLogin}
-        handleShowRegister={handleShowRegister}
-        isUser={isUser}
-        cartCounter={cartCounter}
-        checkLogin={checkLogin}
-        setCheckLogin={setCheckLogin}
-      />
-      <Switch>
-        <Route exact path="/">
-          <LandingPage handleShowLogin={handleShowLogin} />
-        </Route>
-        <Route exact path="/detail/:id">
-          <DetailProductPage
-            setCartCounter={setCartCounter}
-            cartCounter={cartCounter}
-          />
-        </Route>
-        <Route exact path="/cart">
-          <CartPage />
-        </Route>
-        <Route exact path="/profile">
-          <ProfilePage />
-        </Route>
+    <UserContextProvider>
+      <Router>
+        <Header
+          handleShowLogin={handleShowLogin}
+          handleShowRegister={handleShowRegister}
+          cartCounter={cartCounter}
+        />
+        <Switch>
+          <Route exact path="/">
+            <LandingPage handleShowLogin={handleShowLogin} />
+          </Route>
+          <Route exact path="/detail/:id">
+            <DetailProductPage
+              setCartCounter={setCartCounter}
+              cartCounter={cartCounter}
+            />
+          </Route>
+          <PrivateRoute exact path="/cart" component={CartPage} />
 
-        <Route exact path="/profile/edit">
-          <EditProfilePage />
-        </Route>
-        <Route exact path="/add">
-          <AddProductPage />
-        </Route>
-        <Route exact path="/income">
-          <IncomePage />
-        </Route>
-      </Switch>
-      <LoginModal
-        handleCloseLogin={handleCloseLogin}
-        handleShowRegister={handleShowRegister}
-        showLogin={showLogin}
-        setCheckLogin={setCheckLogin}
-      />
-      <RegisterModal
-        handleCloseRegister={handleCloseRegister}
-        handleShowLogin={handleShowLogin}
-        showRegister={showRegister}
-      />
-    </Router>
+          <PrivateRoute exact path="/profile" component={ProfilePage} />
+
+          <PrivateRoute
+            exact
+            path="/profile/edit"
+            component={EditProfilePage}
+          />
+
+          <PrivateRoute exact path="/add" component={AddProductPage} />
+
+          <PrivateRoute exact path="/income" component={IncomePage} />
+        </Switch>
+        <LoginModal
+          handleCloseLogin={handleCloseLogin}
+          handleShowRegister={handleShowRegister}
+          showLogin={showLogin}
+        />
+        <RegisterModal
+          handleCloseRegister={handleCloseRegister}
+          handleShowLogin={handleShowLogin}
+          showRegister={showRegister}
+        />
+      </Router>
+    </UserContextProvider>
   );
 }
 

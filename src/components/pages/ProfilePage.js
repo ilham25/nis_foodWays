@@ -1,3 +1,5 @@
+import { useContext } from "react";
+
 import { Container, Row, Col, Card, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
@@ -6,8 +8,10 @@ import bensu from "../../assets/img/restaurant/bensu.png";
 
 import HistoryCard from "../HistoryCard";
 
+import { UserContext } from "../../contexts/userContext";
+
 function ProfilePage() {
-  const currentUser = JSON.parse(localStorage.getItem("ways-food-user-login"));
+  const [state, dispatch] = useContext(UserContext);
   const {
     id,
     email,
@@ -16,9 +20,8 @@ function ProfilePage() {
     gender,
     phone,
     userrole,
-  } = currentUser;
+  } = state.loggedUser;
 
-  console.log(currentUser);
   return (
     <div className="bg-grey py-5 mt-4">
       <Container>

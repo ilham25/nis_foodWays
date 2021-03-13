@@ -71,35 +71,15 @@ export const dummyMenu = [
   },
 ];
 
-export const dummyPopular = [
-  {
-    id: 1,
-    title: "Burger King",
-    logo: burgerKing,
-  },
-  {
-    id: 2,
-    title: "Starbucks",
-    logo: starbucks,
-  },
-  {
-    id: 3,
-    title: "KFC",
-    logo: kfc,
-  },
-  {
-    id: 4,
-    title: "JCO",
-    logo: jco,
-  },
-];
-
 export const dummyRestaurant = [
   {
     id: 1,
     title: "Geprek Bensu",
     photo: geprek,
     range: "0.2",
+    logo: "",
+    near: true,
+    totalvisited: 0,
     menu: [
       {
         id: 1,
@@ -156,6 +136,9 @@ export const dummyRestaurant = [
     title: "Nasi Goreng Mas Rony",
     photo: nasgor,
     range: "0.6",
+    logo: "",
+    near: true,
+    totalvisited: 0,
     menu: [],
   },
   {
@@ -163,6 +146,9 @@ export const dummyRestaurant = [
     title: "Pecel Ayam Prambanan",
     photo: pecel,
     range: "0.6",
+    logo: "",
+    near: true,
+    totalvisited: 0,
     menu: [],
   },
   {
@@ -170,6 +156,49 @@ export const dummyRestaurant = [
     title: "Kopi Kenangan",
     photo: kopi,
     range: "1.6",
+    logo: "",
+    near: true,
+    totalvisited: 0,
+    menu: [],
+  },
+  {
+    id: 5,
+    title: "Burger King",
+    photo: "",
+    range: "",
+    logo: burgerKing,
+    near: false,
+    totalvisited: 200,
+    menu: [],
+  },
+  {
+    id: 6,
+    title: "Starbucks",
+    photo: "",
+    range: "",
+    logo: starbucks,
+    near: false,
+    totalvisited: 150,
+    menu: [],
+  },
+  {
+    id: 7,
+    title: "KFC",
+    photo: "",
+    range: "",
+    logo: kfc,
+    near: false,
+    totalvisited: 100,
+    menu: [],
+  },
+  {
+    id: 8,
+    title: "JCO",
+    photo: "",
+    range: "",
+    logo: jco,
+    near: false,
+    totalvisited: 50,
     menu: [],
   },
 ];

@@ -1,6 +1,7 @@
+import { useContext, useState, useEffect } from "react";
 import { Nav, Navbar, Button, Container, Dropdown } from "react-bootstrap";
 import { Link, useHistory } from "react-router-dom";
-import { useEffect, useState } from "react";
+
 // SVGs
 import brandLogo from "../assets/svg/brand.svg";
 import iconProfile from "../assets/svg/profile.svg";
@@ -12,21 +13,28 @@ import iconCart from "../assets/svg/cart.svg";
 import imgProfile from "../assets/img/profile.png";
 import bensu from "../assets/img/restaurant/bensu.png";
 
-import { isLogin, logout } from "../utils/auth";
+import { UserContext } from "../contexts/userContext";
 
 export default function Header({
   handleShowLogin,
   handleShowRegister,
-  isUser,
   cartCounter,
-  checkLogin,
-  setCheckLogin,
 }) {
+  const LOCAL_KEY = "ways-food-user";
+
   const history = useHistory();
+  const [state, dispatch] = useContext(UserContext);
 
-  const currentUser = JSON.parse(localStorage.getItem("ways-food-user-login"));
+  useEffect(() => {
+    const getUser = localStorage.getItem(`${LOCAL_KEY}-login`);
+    if (getUser) {
+      dispatch({
+        type: "LOGIN",
+        payload: JSON.parse(getUser),
+      });
+    }
+  }, []);
 
-  const [cek, setCek] = useState("njir");
   const handleNavButton = () => {
     return (
       <>
@@ -40,20 +48,16 @@ export default function Header({
     );
   };
 
-  useEffect(() => {
-    console.log("header state");
-  });
-
   const handleLogout = () => {
-    setCek("oawkeok");
-    logout();
-    setCheckLogin(isLogin());
+    dispatch({
+      type: "LOGOUT",
+    });
     history.push("/");
   };
   const handleProfileButton = () => {
     return (
       <>
-        <Link to="/cart">
+        <Link to={state.loggedUser.userrole == 1 ? "/income" : "/cart"}>
           <div style={{ width: "40px", height: "40px", position: "relative" }}>
             {cartCounter > 0 && (
               <div
@@ -88,11 +92,12 @@ export default function Header({
             style={{
               backgroundColor: "transparent",
               border: "none",
-              outlineWidth: "0px",
+              outline: "none",
+              boxShadow: "none",
             }}
           >
             <img
-              src={currentUser.userrole == 1 ? bensu : imgProfile}
+              src={state.loggedUser.userrole == 1 ? bensu : imgProfile}
               alt="photo"
               width="64"
               height="64"
@@ -107,7 +112,7 @@ export default function Header({
               <img src={iconProfile} alt="icon" width="30" className="mr-2" />{" "}
               Profile
             </Dropdown.Item>
-            {currentUser.userrole == 1 && (
+            {state.loggedUser.userrole == 1 && (
               <Dropdown.Item as={Link} to="/add" className="py-2">
                 <img
                   src={iconAddProduct}
@@ -142,7 +147,7 @@ export default function Header({
         </Navbar.Brand>
         <Nav className="mr-auto"></Nav>
 
-        {checkLogin ? handleProfileButton() : handleNavButton()}
+        {state.isLogin ? handleProfileButton() : handleNavButton()}
       </Container>
     </Navbar>
   );
