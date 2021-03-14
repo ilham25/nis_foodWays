@@ -1,10 +1,13 @@
-import { Container, Col, Row, Form, Button } from "react-bootstrap";
 import { useState } from "react";
+
+import { Container, Col, Row, Form, Button } from "react-bootstrap";
 import { useHistory } from "react-router-dom";
 
-import iconMap from "../../assets/svg/map.svg";
-
+// Components
 import MapModal from "../modal/MapModal";
+
+// Assets
+import iconMap from "../../assets/svg/map.svg";
 
 function EditProfilePage() {
   const history = useHistory();

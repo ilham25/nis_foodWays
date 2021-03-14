@@ -3,13 +3,16 @@ import { useContext } from "react";
 import { Container, Row, Col, Card, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
-import imgProfileBig from "../../assets/img/profile-big.png";
-import bensu from "../../assets/img/restaurant/bensu.png";
-
-import HistoryCard from "../HistoryCard";
-
+// State Management
 import { UserContext } from "../../contexts/userContext";
 import { CartContext } from "../../contexts/cartContext";
+
+// Components
+import HistoryCard from "../HistoryCard";
+
+// Assets
+import imgProfileBig from "../../assets/img/profile-big.png";
+import bensu from "../../assets/img/restaurant/bensu.png";
 
 function ProfilePage() {
   const { state: userState, dispatch: userDispatch } = useContext(UserContext);

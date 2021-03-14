@@ -2,6 +2,11 @@ import { useState, useEffect } from "react";
 
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
+// State Management
+import { UserContextProvider } from "./contexts/userContext";
+import { CartContextProvider } from "./contexts/cartContext";
+
+// Components
 import LoginModal from "./components/modal/LoginModal";
 import RegisterModal from "./components/modal/RegisterModal";
 import LandingPage from "./components/pages/LandingPage";
@@ -12,10 +17,6 @@ import ProfilePage from "./components/pages/ProfilePage";
 import AddProductPage from "./components/pages/AddProductPage";
 import IncomePage from "./components/pages/IncomePage";
 import EditProfilePage from "./components/pages/EditProfilePage";
-
-import { UserContextProvider } from "./contexts/userContext";
-import { CartContextProvider } from "./contexts/cartContext";
-
 import PrivateRoute from "./components/routes/PrivateRoute";
 
 function App() {

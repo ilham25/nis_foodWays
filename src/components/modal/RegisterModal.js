@@ -1,5 +1,6 @@
 import { Modal, Button, Form } from "react-bootstrap";
 
+// Assets
 import imgProfile from "../../assets/img/profile.png";
 
 export default function RegisterModal({

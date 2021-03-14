@@ -3,16 +3,15 @@ import { useContext, useState, useEffect } from "react";
 import { Dropdown } from "react-bootstrap";
 import { Link, useHistory } from "react-router-dom";
 
+// State Management
 import { UserContext } from "../contexts/userContext";
 import { CartContext } from "../contexts/cartContext";
 
-//SVGs
+// Assets
 import iconProfile from "../assets/svg/profile.svg";
 import iconAddProduct from "../assets/svg/addproduct.svg";
 import iconLogout from "../assets/svg/logout.svg";
 import iconCart from "../assets/svg/cart.svg";
-
-// img
 import imgProfile from "../assets/img/profile.png";
 import bensu from "../assets/img/restaurant/bensu.png";
 

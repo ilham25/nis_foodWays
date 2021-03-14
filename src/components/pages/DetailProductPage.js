@@ -1,11 +1,15 @@
+import { useState, useEffect } from "react";
+
 import { Container, Row, Col } from "react-bootstrap";
 import { useParams } from "react-router-dom";
-import { useState, useEffect } from "react";
+
+// Components
 import MenuCard from "../MenuCard";
 
+// Dummy data
 import { dummyRestaurant } from "../../utils/data";
 
-export default function DetailProductPage({ setCartCounter, cartCounter }) {
+export default function DetailProductPage() {
   const [menu, setMenu] = useState(null);
   const { id } = useParams();
 

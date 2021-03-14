@@ -1,27 +1,25 @@
 import { useEffect, useState, useContext } from "react";
 
 import { Container, Col, Row, Card, Button } from "react-bootstrap";
-import HeroSection from "./HeroSection";
 
+// State Management
+import { UserContext } from "../../contexts/userContext";
+
+// Components
+import HeroSection from "./HeroSection";
 import PopularCard from "../PopularCard";
 import RestaurantCard from "../RestaurantCard";
 
+// Dummy data
 import { dummyRestaurant } from "../../utils/data";
 
-import { UserContext } from "../../contexts/userContext";
-
-export default function LandingPage({
-  handleShowLogin,
-  isLogin,
-  setFakeRoute,
-}) {
+export default function LandingPage({ handleShowLogin }) {
   const [popularRestaurant, setPopularRestaurant] = useState([]);
   const { state: userState, dispatch: userDispatch } = useContext(UserContext);
   const handlePopularRestaurant = () => {
     const sortedVisitRestaurant = dummyRestaurant
       .sort((a, b) => parseFloat(b.totalvisited) - parseFloat(a.totalvisited))
       .slice(0, 4);
-    // console.log("sorted ", sortedVisitRestaurant);
     setPopularRestaurant(sortedVisitRestaurant);
   };
 
@@ -44,9 +42,7 @@ export default function LandingPage({
           <Row className="mb-5 py-0">
             {popularRestaurant.map((popular) => (
               <PopularCard
-                logo={popular.logo}
-                title={popular.title}
-                id={popular.id}
+                data={popular}
                 key={popular.id}
                 handleShowLogin={handleShowLogin}
               />

@@ -1,5 +1,6 @@
 import { Container, Col, Row } from "react-bootstrap";
 
+// SVG
 import pizza from "../../assets/svg/pizza.svg";
 
 export default function HeroSection() {

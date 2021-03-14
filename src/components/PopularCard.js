@@ -1,17 +1,17 @@
 import { useContext } from "react";
 
+import { Container, Col, Row } from "react-bootstrap";
 import { useHistory } from "react-router-dom";
 
-import { Container, Col, Row } from "react-bootstrap";
-
+// State Management
 import { UserContext } from "../contexts/userContext";
 
-export default function PopularCard({ id, logo, title, handleShowLogin }) {
+export default function PopularCard({ data, handleShowLogin }) {
   const history = useHistory();
+  const { id, logo, title } = data;
   const { state: userState, dispatch: userDispatch } = useContext(UserContext);
   const handleClick = () => {
     if (userState.isLogin) {
-      // alert("login");
       history.push(`/detail/${id}`);
     } else {
       handleShowLogin();

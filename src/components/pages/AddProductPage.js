@@ -1,5 +1,6 @@
-import { Container, Col, Row, Form, Button, Modal } from "react-bootstrap";
 import { useState } from "react";
+
+import { Container, Col, Row, Form, Button, Modal } from "react-bootstrap";
 import { useHistory } from "react-router-dom";
 
 function AddProductPage() {

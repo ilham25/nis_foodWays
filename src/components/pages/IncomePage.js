@@ -10,12 +10,16 @@ import {
   Table,
 } from "react-bootstrap";
 import { useHistory } from "react-router-dom";
-import { dummyIncome } from "../../utils/data";
 
+// State Management
+import { UserContext } from "../../contexts/userContext";
+
+// Assets
 import actionSuccess from "../../assets/svg/action-success.svg";
 import actionCancel from "../../assets/svg/action-cancel.svg";
 
-import { UserContext } from "../../contexts/userContext";
+// Dummy data
+import { dummyIncome } from "../../utils/data";
 
 function IncomePage() {
   const history = useHistory();

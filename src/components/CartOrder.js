@@ -1,9 +1,12 @@
 import { useContext, useState } from "react";
+
 import { Row, Col, Button } from "react-bootstrap";
 
-import iconRemove from "../assets/svg/remove.svg";
-
+// State Management
 import { CartContext } from "../contexts/cartContext";
+
+// Assets
+import iconRemove from "../assets/svg/remove.svg";
 
 export default function CartOrder({ data }) {
   const { state: cartState, dispatch: cartDispatch } = useContext(CartContext);

@@ -7,23 +7,22 @@ import {
   InputGroup,
   FormControl,
   Button,
-  Modal,
 } from "react-bootstrap";
-
 import { useHistory } from "react-router-dom";
 
-import CartOrder from "../CartOrder";
-
-import geprek1 from "../../assets/img/restaurant/bensu.png";
-import geprek2 from "../../assets/img/menu/geprek2.png";
-
-import iconMap from "../../assets/svg/map.svg";
-import iconMapPointer from "../../assets/svg/map-pointer.svg";
-
-import MapModal from "../modal/MapModal";
-
+// State Management
 import { UserContext } from "../../contexts/userContext";
 import { CartContext } from "../../contexts/cartContext";
+
+// Components
+import CartOrder from "../CartOrder";
+import MapModal from "../modal/MapModal";
+
+// Assets
+import geprek1 from "../../assets/img/restaurant/bensu.png";
+import geprek2 from "../../assets/img/menu/geprek2.png";
+import iconMap from "../../assets/svg/map.svg";
+import iconMapPointer from "../../assets/svg/map-pointer.svg";
 
 export default function CartPage() {
   const { state: userState, dispatch: userDispatch } = useContext(UserContext);

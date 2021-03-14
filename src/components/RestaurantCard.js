@@ -1,8 +1,9 @@
 import { useContext } from "react";
 
 import { Col, Card } from "react-bootstrap";
-import { Link, useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 
+// State Management
 import { UserContext } from "../contexts/userContext";
 import { CartContext } from "../contexts/cartContext";
 

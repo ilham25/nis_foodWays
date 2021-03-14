@@ -2,6 +2,7 @@ import { useContext } from "react";
 
 import { Col, Card, Button } from "react-bootstrap";
 
+// State Management
 import { CartContext } from "../contexts/cartContext";
 
 export default function MenuCard({ data }) {

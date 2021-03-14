@@ -1,9 +1,7 @@
-import { useContext } from "react";
-
 import { Col, Card, Row, Button } from "react-bootstrap";
-import brandLogo from "../assets/svg/brand.svg";
 
-import { CartContext } from "../contexts/cartContext";
+// Assets
+import brandLogo from "../assets/svg/brand.svg";
 
 function HistoryCard({ userrole, data }) {
   const { date, day, total, username, restaurant } = data;

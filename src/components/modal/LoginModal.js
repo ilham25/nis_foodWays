@@ -3,6 +3,7 @@ import { useContext } from "react";
 import { Modal, Button, Form } from "react-bootstrap";
 import { useHistory } from "react-router-dom";
 
+// State Management
 import { UserContext } from "../../contexts/userContext";
 
 export default function LoginModal({

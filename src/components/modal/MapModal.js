@@ -1,12 +1,17 @@
 import { useState, useEffect, useContext } from "react";
+
 import { Modal, Col, Row, Button } from "react-bootstrap";
 import { useHistory } from "react-router-dom";
 
-import iconMapPointer from "../../assets/svg/map-pointer.svg";
+// State Management
+import { CartContext } from "../../contexts/cartContext";
 
+// Components
 import MapRender from "../MapRender";
 
-import { CartContext } from "../../contexts/cartContext";
+// Assets
+import iconMapPointer from "../../assets/svg/map-pointer.svg";
+
 function MapModal({ show, handleMapClose, from, data }) {
   const history = useHistory();
   const [isFinished, setIsFinished] = useState(false);
