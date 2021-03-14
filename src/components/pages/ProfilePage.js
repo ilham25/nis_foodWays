@@ -94,9 +94,17 @@ function ProfilePage() {
               </Col>
             </Row>
             <Row>
-              {cartState.transactions.map((tran) => (
-                <HistoryCard userrole={userrole} data={tran} />
-              ))}
+              {cartState.transactions.map((tran, index) =>
+                userState.loggedUser.userrole == 1
+                  ? tran.restaurant
+                  : tran.username === userState.loggedUser.fullname && (
+                      <HistoryCard
+                        key={index}
+                        userrole={userrole}
+                        data={tran}
+                      />
+                    )
+              )}
             </Row>
           </Col>
         </Row>

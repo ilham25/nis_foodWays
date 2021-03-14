@@ -215,6 +215,8 @@ export default function CartPage() {
         from="order"
         data={{
           total,
+          username: userState.loggedUser.fullname,
+          restaurant: cartState.currentRestaurant,
           ...currentDate,
         }}
       />

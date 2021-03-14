@@ -6,7 +6,7 @@ import brandLogo from "../assets/svg/brand.svg";
 import { CartContext } from "../contexts/cartContext";
 
 function HistoryCard({ userrole, data }) {
-  const { date, day, total } = data;
+  const { date, day, total, username, restaurant } = data;
   return (
     <Col xs={12} md={12} className="mb-4">
       <Card style={{ border: "none" }}>
@@ -16,7 +16,7 @@ function HistoryCard({ userrole, data }) {
               <Row>
                 <Col>
                   <p className="heading font-weight-bold mb-1 h5">
-                    {userrole ? "Andi" : "Geprek Bensu"}
+                    {userrole ? username : restaurant}
                   </p>
                   <small className="">
                     <span className="font-weight-bold">{day},</span> {date}
