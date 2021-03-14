@@ -23,9 +23,13 @@ const ProfileButton = () => {
   const { state: cartState, dispatch: cartDispatch } = useContext(CartContext);
 
   const handleLogout = () => {
+    cartDispatch({
+      type: "EMPTY_CART",
+    });
     userDispatch({
       type: "LOGOUT",
     });
+
     history.push("/");
   };
 

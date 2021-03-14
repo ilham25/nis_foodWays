@@ -31,7 +31,9 @@ export default function MenuCard({ data }) {
           >
             {title}
           </Card.Title>
-          <Card.Text className="heading text-danger">Rp. {price}</Card.Text>
+          <Card.Text className="heading text-danger">
+            Rp. {price.toLocaleString()}
+          </Card.Text>
           <Button
             variant="warning"
             size="sm"

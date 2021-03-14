@@ -1,13 +1,36 @@
+import { useContext, useState } from "react";
 import { Row, Col, Button } from "react-bootstrap";
-import { useState } from "react";
+
 import iconRemove from "../assets/svg/remove.svg";
 
+import { CartContext } from "../contexts/cartContext";
+
 export default function CartOrder({ data }) {
+  const { state: cartState, dispatch: cartDispatch } = useContext(CartContext);
+
   const { photo, title, price, qty } = data;
 
-  const handleDecrement = () => {};
+  const handleRemoveCart = () => {
+    cartDispatch({
+      type: "REMOVE_CART",
+      payload: data,
+    });
+  };
 
-  const handleIncrement = () => {};
+  const handleAddCart = () => {
+    cartDispatch({
+      type: "ADD_CART",
+      payload: data,
+    });
+  };
+
+  const handleDeleteCart = () => {
+    cartDispatch({
+      type: "DELETE_CART",
+      payload: data,
+    });
+  };
+
   return (
     <Row>
       <Col xs={3} md={2}>
@@ -29,7 +52,9 @@ export default function CartOrder({ data }) {
             <p className="heading font-weight-bold">{title}</p>
           </Col>
           <Col xs={6} md={6}>
-            <p className="text-danger text-right">Rp. {price}</p>
+            <p className="text-danger text-right">
+              Rp. {price.toLocaleString()}
+            </p>
           </Col>
         </Row>
         <Row>
@@ -41,7 +66,7 @@ export default function CartOrder({ data }) {
                 backgroundColor: "transparent",
                 border: "none",
               }}
-              onClick={handleDecrement}
+              onClick={handleRemoveCart}
             >
               -
             </Button>
@@ -61,15 +86,23 @@ export default function CartOrder({ data }) {
                 backgroundColor: "transparent",
                 border: "none",
               }}
-              onClick={handleIncrement}
+              onClick={handleAddCart}
             >
               +
             </Button>
           </Col>
           <Col xs={6} md={6} className="text-right my-auto">
-            <a href="#!">
+            <Button
+              variant="light"
+              className="font-weight-bold h3 mb-0 text-brown"
+              style={{
+                backgroundColor: "transparent",
+                border: "none",
+              }}
+              onClick={handleDeleteCart}
+            >
               <img src={iconRemove} alt="remove icon" height="20" />
-            </a>
+            </Button>
           </Col>
         </Row>
       </Col>

@@ -66,12 +66,7 @@ export default function LandingPage({
                   <RestaurantCard
                     key={restaurant.id}
                     handleShowLogin={handleShowLogin}
-                    isLogin={isLogin}
-                    id={restaurant.id}
-                    title={restaurant.title}
-                    photo={restaurant.photo}
-                    range={restaurant.range}
-                    setFakeRoute={setFakeRoute}
+                    data={restaurant}
                   />
                 )
             )}

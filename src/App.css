@@ -45,6 +45,9 @@
 .btn-danger {
   background-color: #ff0742 !important;
 }
+.btn-danger:hover {
+  background-color: #d50637 !important;
+}
 .text-danger {
   color: #ff0742 !important;
 }

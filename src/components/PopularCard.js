@@ -26,7 +26,11 @@ export default function PopularCard({ id, logo, title, handleShowLogin }) {
           onClick={handleClick}
         >
           <Col xs={3} className="text-center">
-            <img src={logo} alt="burger king" />
+            <img
+              src={logo}
+              style={{ width: "65px", height: "65px", objectFit: "cover" }}
+              alt={title}
+            />
           </Col>
           <Col xs={9} className="my-auto text-center">
             <h3 className="heading my-0 font-weight-bold">{title}</h3>

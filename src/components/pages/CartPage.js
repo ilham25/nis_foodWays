@@ -28,20 +28,6 @@ import { CartContext } from "../../contexts/cartContext";
 export default function CartPage() {
   const { state: userState, dispatch: userDispatch } = useContext(UserContext);
   const { state: cartState, dispatch: cartDispatch } = useContext(CartContext);
-  const dummyOrder = [
-    {
-      id: 1,
-      title: "Paket Geprek",
-      price: "15.000",
-      photo: geprek1,
-    },
-    {
-      id: 2,
-      title: "Paket Geprek Keju",
-      price: "20.000",
-      photo: geprek2,
-    },
-  ];
 
   // Modal Handler
   const [show, setShow] = useState(false);
@@ -54,12 +40,23 @@ export default function CartPage() {
   const handleMapDeliveryShow = () => setShowDelivery(true);
 
   const [quantity, setQuantity] = useState(0);
+  const [price, setPrice] = useState(0);
+  const [delivery, setDelivery] = useState(10000);
+  const [total, setTotal] = useState(0);
 
   const history = useHistory();
 
   useEffect(() => {
-    console.log(cartState.carts);
-  }, []);
+    let tmpQty = 0;
+    let tmpPrice = 0;
+    cartState.carts.map((cart) => {
+      tmpQty = tmpQty + cart.qty;
+      tmpPrice = tmpPrice + cart.price * cart.qty;
+    });
+    setQuantity(tmpQty);
+    setPrice(tmpPrice);
+    setTotal(tmpPrice + delivery);
+  }, [cartState.carts]);
 
   if (!userState.isLogin) {
     history.push("/");
@@ -71,7 +68,9 @@ export default function CartPage() {
       <Container>
         <Row className="mb-4">
           <Col sm={12}>
-            <h1 className="heading font-weight-bold">Geprek Bensu</h1>
+            <h1 className="heading font-weight-bold">
+              {cartState.currentRestaurant}
+            </h1>
           </Col>
         </Row>
         <Row>
@@ -121,7 +120,9 @@ export default function CartPage() {
                 <p>Subtotal</p>
               </Col>
               <Col xs={6} lg={6}>
-                <p className="text-right text-danger">Rp. 35.000</p>
+                <p className="text-right text-danger">
+                  Rp. {price.toLocaleString()}
+                </p>
               </Col>
             </Row>
             <Row>
@@ -137,7 +138,9 @@ export default function CartPage() {
                 <p className="mb-0">Ongkir</p>
               </Col>
               <Col xs={6} lg={6}>
-                <p className="text-right text-danger mb-0">Rp. 10.000</p>
+                <p className="text-right text-danger mb-0">
+                  Rp. {delivery.toLocaleString()}
+                </p>
               </Col>
             </Row>
             <hr className="divider" />
@@ -147,7 +150,7 @@ export default function CartPage() {
               </Col>
               <Col xs={6} lg={6}>
                 <p className="text-right text-danger font-weight-bold mb-0">
-                  Rp. 45.000
+                  Rp. {total.toLocaleString()}
                 </p>
               </Col>
             </Row>
