@@ -11,7 +11,7 @@ export default function LoginModal({
   handleShowRegister,
 }) {
   const history = useHistory();
-  const [state, dispatch] = useContext(UserContext);
+  const { state: userState, dispatch: userDispatch } = useContext(UserContext);
 
   const LOCAL_KEY = "ways-food-user";
 
@@ -26,7 +26,7 @@ export default function LoginModal({
     if (checkUser) {
       if (checkUser.password == data.password) {
         localStorage.setItem(`${LOCAL_KEY}-login`, JSON.stringify(checkUser));
-        dispatch({
+        userDispatch({
           type: "LOGIN",
           payload: checkUser,
         });

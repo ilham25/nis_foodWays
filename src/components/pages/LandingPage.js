@@ -16,12 +16,8 @@ export default function LandingPage({
   setFakeRoute,
 }) {
   const [popularRestaurant, setPopularRestaurant] = useState([]);
-  const [state, dispatch] = useContext(UserContext);
+  const { state: userState, dispatch: userDispatch } = useContext(UserContext);
   const handlePopularRestaurant = () => {
-    // const filteredRestaurant = dummyRestaurant.filter(
-    //   (visit) => visit.totalvisited > 0
-    // );
-
     const sortedVisitRestaurant = dummyRestaurant
       .sort((a, b) => parseFloat(b.totalvisited) - parseFloat(a.totalvisited))
       .slice(0, 4);

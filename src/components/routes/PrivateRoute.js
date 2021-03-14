@@ -3,13 +3,13 @@ import { useContext } from "react";
 import { UserContext } from "../../contexts/userContext";
 
 const PrivateRoute = ({ component: Component, ...rest }) => {
-  const [state] = useContext(UserContext);
+  const { state: userState } = useContext(UserContext);
 
   return (
     <Route
       {...rest}
       render={(props) =>
-        state.isLogin ? <Component {...props} /> : <Redirect to="/" />
+        userState.isLogin ? <Component {...props} /> : <Redirect to="/" />
       }
     />
   );

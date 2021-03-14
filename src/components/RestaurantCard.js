@@ -13,9 +13,9 @@ export default function RestaurantCard({
   photo,
 }) {
   const history = useHistory();
-  const [state, dispatch] = useContext(UserContext);
+  const { state: userState, dispatch: userDispatch } = useContext(UserContext);
   const handleClick = () => {
-    if (state.isLogin) {
+    if (userState.isLogin) {
       // alert("login");
       history.push(`/detail/${id}`);
     } else {

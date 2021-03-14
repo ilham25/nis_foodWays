@@ -11,7 +11,7 @@ import HistoryCard from "../HistoryCard";
 import { UserContext } from "../../contexts/userContext";
 
 function ProfilePage() {
-  const [state, dispatch] = useContext(UserContext);
+  const { state: userState, dispatch: userDispatch } = useContext(UserContext);
   const {
     id,
     email,
@@ -20,7 +20,7 @@ function ProfilePage() {
     gender,
     phone,
     userrole,
-  } = state.loggedUser;
+  } = userState.loggedUser;
 
   return (
     <div className="bg-grey py-5 mt-4">

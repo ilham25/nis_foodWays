@@ -10,7 +10,6 @@ export default function DetailProductPage({ setCartCounter, cartCounter }) {
   const { id } = useParams();
 
   const menuById = () => {
-    console.log(dummyRestaurant);
     const filteredMenu = dummyRestaurant.find((menu) => menu.id == id);
     setMenu(filteredMenu);
   };
@@ -30,16 +29,7 @@ export default function DetailProductPage({ setCartCounter, cartCounter }) {
         </Row>
         <Row>
           {menu &&
-            menu.menu.map((menu) => (
-              <MenuCard
-                key={menu.id}
-                title={menu.title}
-                price={menu.price}
-                photo={menu.photo}
-                setCartCounter={setCartCounter}
-                cartCounter={cartCounter}
-              />
-            ))}
+            menu.menu.map((menu) => <MenuCard key={menu.id} data={menu} />)}
         </Row>
       </Container>
     </div>

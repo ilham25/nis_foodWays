@@ -14,6 +14,8 @@ import IncomePage from "./components/pages/IncomePage";
 import EditProfilePage from "./components/pages/EditProfilePage";
 
 import { UserContextProvider } from "./contexts/userContext";
+import { CartContextProvider } from "./contexts/cartContext";
+
 import PrivateRoute from "./components/routes/PrivateRoute";
 
 function App() {
@@ -27,53 +29,48 @@ function App() {
   const handleCloseRegister = () => setShowRegister(false);
   const handleShowRegister = () => setShowRegister(true);
 
-  // Cart stuff
-  const [cartCounter, setCartCounter] = useState(0);
-
   return (
-    <UserContextProvider>
-      <Router>
-        <Header
-          handleShowLogin={handleShowLogin}
-          handleShowRegister={handleShowRegister}
-          cartCounter={cartCounter}
-        />
-        <Switch>
-          <Route exact path="/">
-            <LandingPage handleShowLogin={handleShowLogin} />
-          </Route>
-          <Route exact path="/detail/:id">
-            <DetailProductPage
-              setCartCounter={setCartCounter}
-              cartCounter={cartCounter}
-            />
-          </Route>
-          <PrivateRoute exact path="/cart" component={CartPage} />
-
-          <PrivateRoute exact path="/profile" component={ProfilePage} />
-
-          <PrivateRoute
-            exact
-            path="/profile/edit"
-            component={EditProfilePage}
+    <CartContextProvider>
+      <UserContextProvider>
+        <Router>
+          <Header
+            handleShowLogin={handleShowLogin}
+            handleShowRegister={handleShowRegister}
           />
+          <Switch>
+            <Route exact path="/">
+              <LandingPage handleShowLogin={handleShowLogin} />
+            </Route>
+            <Route exact path="/detail/:id">
+              <DetailProductPage />
+            </Route>
+            <PrivateRoute exact path="/cart" component={CartPage} />
 
-          <PrivateRoute exact path="/add" component={AddProductPage} />
+            <PrivateRoute exact path="/profile" component={ProfilePage} />
 
-          <PrivateRoute exact path="/income" component={IncomePage} />
-        </Switch>
-        <LoginModal
-          handleCloseLogin={handleCloseLogin}
-          handleShowRegister={handleShowRegister}
-          showLogin={showLogin}
-        />
-        <RegisterModal
-          handleCloseRegister={handleCloseRegister}
-          handleShowLogin={handleShowLogin}
-          showRegister={showRegister}
-        />
-      </Router>
-    </UserContextProvider>
+            <PrivateRoute
+              exact
+              path="/profile/edit"
+              component={EditProfilePage}
+            />
+
+            <PrivateRoute exact path="/add" component={AddProductPage} />
+
+            <PrivateRoute exact path="/income" component={IncomePage} />
+          </Switch>
+          <LoginModal
+            handleCloseLogin={handleCloseLogin}
+            handleShowRegister={handleShowRegister}
+            showLogin={showLogin}
+          />
+          <RegisterModal
+            handleCloseRegister={handleCloseRegister}
+            handleShowLogin={handleShowLogin}
+            showRegister={showRegister}
+          />
+        </Router>
+      </UserContextProvider>
+    </CartContextProvider>
   );
 }
 

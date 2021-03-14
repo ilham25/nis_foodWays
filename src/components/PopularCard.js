@@ -8,9 +8,9 @@ import { UserContext } from "../contexts/userContext";
 
 export default function PopularCard({ id, logo, title, handleShowLogin }) {
   const history = useHistory();
-  const [state, dispatch] = useContext(UserContext);
+  const { state: userState, dispatch: userDispatch } = useContext(UserContext);
   const handleClick = () => {
-    if (state.isLogin) {
+    if (userState.isLogin) {
       // alert("login");
       history.push(`/detail/${id}`);
     } else {

@@ -1,3 +1,5 @@
+import { useState, useContext, useEffect } from "react";
+
 import {
   Container,
   Row,
@@ -7,7 +9,7 @@ import {
   Button,
   Modal,
 } from "react-bootstrap";
-import { useState, useContext } from "react";
+
 import { useHistory } from "react-router-dom";
 
 import CartOrder from "../CartOrder";
@@ -21,9 +23,11 @@ import iconMapPointer from "../../assets/svg/map-pointer.svg";
 import MapModal from "../modal/MapModal";
 
 import { UserContext } from "../../contexts/userContext";
+import { CartContext } from "../../contexts/cartContext";
 
 export default function CartPage() {
-  const [state, dispatch] = useContext(UserContext);
+  const { state: userState, dispatch: userDispatch } = useContext(UserContext);
+  const { state: cartState, dispatch: cartDispatch } = useContext(CartContext);
   const dummyOrder = [
     {
       id: 1,
@@ -52,7 +56,12 @@ export default function CartPage() {
   const [quantity, setQuantity] = useState(0);
 
   const history = useHistory();
-  if (!state.isLogin) {
+
+  useEffect(() => {
+    console.log(cartState.carts);
+  }, []);
+
+  if (!userState.isLogin) {
     history.push("/");
     return null;
   }
@@ -101,13 +110,8 @@ export default function CartPage() {
           <Col sm={12} lg={7}>
             <hr className="divider" />
 
-            {dummyOrder.map((order) => (
-              <CartOrder
-                photo={order.photo}
-                title={order.title}
-                price={order.price}
-                key={order.id}
-              />
+            {cartState.carts.map((cart) => (
+              <CartOrder data={cart} key={cart.id} />
             ))}
           </Col>
           <Col lg={5}>

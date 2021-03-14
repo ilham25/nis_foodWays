@@ -1,14 +1,18 @@
+import { useContext } from "react";
+
 import { Col, Card, Button } from "react-bootstrap";
 
-export default function MenuCard({
-  title,
-  price,
-  photo,
-  setCartCounter,
-  cartCounter,
-}) {
+import { CartContext } from "../contexts/cartContext";
+
+export default function MenuCard({ data }) {
+  const { state: cartState, dispatch: cartDispatch } = useContext(CartContext);
+
+  const { title, price, photo } = data;
   const handleOrder = () => {
-    setCartCounter(cartCounter + 1);
+    cartDispatch({
+      type: "ADD_CART",
+      payload: data,
+    });
   };
   return (
     <Col xs={12} md={4} lg={3} className="mb-4">

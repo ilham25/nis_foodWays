@@ -19,10 +19,10 @@ import { UserContext } from "../../contexts/userContext";
 
 function IncomePage() {
   const history = useHistory();
-  const [state, dispatch] = useContext(UserContext);
+  const { state: userState, dispatch: userDispatch } = useContext(UserContext);
 
   useEffect(() => {
-    state.loggedUser.userrole !== 1 && history.push("/");
+    userState.loggedUser.userrole !== 1 && history.push("/");
   }, []);
 
   /**

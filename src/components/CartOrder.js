@@ -2,16 +2,12 @@ import { Row, Col, Button } from "react-bootstrap";
 import { useState } from "react";
 import iconRemove from "../assets/svg/remove.svg";
 
-export default function CartOrder({ photo, title, price }) {
-  const [counter, setCounter] = useState(0);
+export default function CartOrder({ data }) {
+  const { photo, title, price, qty } = data;
 
-  const handleDecrement = () => {
-    counter > 0 && setCounter(counter - 1);
-  };
+  const handleDecrement = () => {};
 
-  const handleIncrement = () => {
-    setCounter(counter + 1);
-  };
+  const handleIncrement = () => {};
   return (
     <Row>
       <Col xs={3} md={2}>
@@ -56,7 +52,7 @@ export default function CartOrder({ photo, title, price }) {
                 borderRadius: "5px",
               }}
             >
-              {counter}
+              {data.qty}
             </p>
             <Button
               variant="light"
