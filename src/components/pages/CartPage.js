@@ -43,6 +43,7 @@ export default function CartPage() {
   const [price, setPrice] = useState(0);
   const [delivery, setDelivery] = useState(10000);
   const [total, setTotal] = useState(0);
+  const [currentDate, setCurrentDate] = useState({});
 
   const history = useHistory();
 
@@ -57,6 +58,45 @@ export default function CartPage() {
     setPrice(tmpPrice);
     setTotal(tmpPrice + delivery);
   }, [cartState.carts]);
+
+  useEffect(() => {
+    const current = new Date();
+    const months = [
+      "January",
+      "February",
+      "March",
+      "April",
+      "May",
+      "June",
+      "July",
+      "August",
+      "September",
+      "October",
+      "November",
+      "December",
+    ];
+    const days = [
+      "Sunday",
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday",
+      "Saturday",
+    ];
+    const timeStr =
+      ("0" + current.getHours()).slice(-2) +
+      ":" +
+      ("0" + current.getMinutes()).slice(-2);
+    const currDate = `${("0" + current.getDate()).slice(-2)} ${
+      months[current.getMonth()]
+    } ${current.getFullYear()}`;
+    const currDay = days[current.getDay()];
+    setCurrentDate({
+      day: currDay,
+      date: currDate,
+    });
+  }, []);
 
   if (!userState.isLogin) {
     history.push("/");
@@ -173,6 +213,10 @@ export default function CartPage() {
         show={showDelivery}
         handleMapClose={handleMapDeliveryClose}
         from="order"
+        data={{
+          total,
+          ...currentDate,
+        }}
       />
     </div>
   );

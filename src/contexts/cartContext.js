@@ -5,6 +5,7 @@ export const CartContext = createContext();
 const initialState = {
   carts: [],
   currentRestaurant: null,
+  transactions: [],
 };
 
 const reducer = (state, action) => {
@@ -90,6 +91,12 @@ const reducer = (state, action) => {
       return {
         ...state,
         currentRestaurant: payload,
+      };
+      break;
+    case "ADD_TRANSACTION":
+      return {
+        ...state,
+        transactions: [...state.transactions, payload],
       };
       break;
     default:

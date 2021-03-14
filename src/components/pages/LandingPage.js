@@ -62,7 +62,7 @@ export default function LandingPage({
           <Row>
             {dummyRestaurant.map(
               (restaurant) =>
-                restaurant.near && (
+                restaurant.range <= 2 && (
                   <RestaurantCard
                     key={restaurant.id}
                     handleShowLogin={handleShowLogin}

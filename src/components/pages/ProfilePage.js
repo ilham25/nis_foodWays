@@ -9,9 +9,11 @@ import bensu from "../../assets/img/restaurant/bensu.png";
 import HistoryCard from "../HistoryCard";
 
 import { UserContext } from "../../contexts/userContext";
+import { CartContext } from "../../contexts/cartContext";
 
 function ProfilePage() {
   const { state: userState, dispatch: userDispatch } = useContext(UserContext);
+  const { state: cartState, dispatch: cartDispatch } = useContext(CartContext);
   const {
     id,
     email,
@@ -92,7 +94,9 @@ function ProfilePage() {
               </Col>
             </Row>
             <Row>
-              <HistoryCard userrole={userrole} />
+              {cartState.transactions.map((tran) => (
+                <HistoryCard userrole={userrole} data={tran} />
+              ))}
             </Row>
           </Col>
         </Row>

@@ -1,7 +1,12 @@
+import { useContext } from "react";
+
 import { Col, Card, Row, Button } from "react-bootstrap";
 import brandLogo from "../assets/svg/brand.svg";
 
-function HistoryCard({ userrole }) {
+import { CartContext } from "../contexts/cartContext";
+
+function HistoryCard({ userrole, data }) {
+  const { date, day, total } = data;
   return (
     <Col xs={12} md={12} className="mb-4">
       <Card style={{ border: "none" }}>
@@ -14,8 +19,7 @@ function HistoryCard({ userrole }) {
                     {userrole ? "Andi" : "Geprek Bensu"}
                   </p>
                   <small className="">
-                    <span className="font-weight-bold">Saturday,</span> 12 March
-                    2021
+                    <span className="font-weight-bold">{day},</span> {date}
                   </small>
                 </Col>
               </Row>
@@ -27,7 +31,7 @@ function HistoryCard({ userrole }) {
           <Row className="mt-4">
             <Col xs={6} md={6}>
               <p className="font-weight-bold" style={{ color: "#974A4A" }}>
-                Total : Rp. 45.000
+                Total : Rp. {total.toLocaleString()}
               </p>
             </Col>
             <Col xs={6} md={6} className=" pl-5 pl-sm-5 ">

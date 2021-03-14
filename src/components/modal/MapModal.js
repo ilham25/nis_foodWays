@@ -1,11 +1,16 @@
-import { useState } from "react";
+import { useState, useEffect, useContext } from "react";
 import { Modal, Col, Row, Button } from "react-bootstrap";
+import { useHistory } from "react-router-dom";
 
 import iconMapPointer from "../../assets/svg/map-pointer.svg";
 
 import MapRender from "../MapRender";
-function MapModal({ show, handleMapClose, from }) {
-  const [isFinished, setIsFinished] = useState(true);
+
+import { CartContext } from "../../contexts/cartContext";
+function MapModal({ show, handleMapClose, from, data }) {
+  const history = useHistory();
+  const [isFinished, setIsFinished] = useState(false);
+  const { state: cartState, dispatch: cartDispatch } = useContext(CartContext);
 
   const renderDialog = () => {
     switch (from) {
@@ -111,7 +116,11 @@ function MapModal({ show, handleMapClose, from }) {
             {isFinished && (
               <Row className="mt-4">
                 <Col lg={12}>
-                  <Button variant="brown" className="w-100">
+                  <Button
+                    variant="brown"
+                    className="w-100"
+                    onClick={handleFinished}
+                  >
                     Finished Order
                   </Button>
                 </Col>
@@ -173,6 +182,25 @@ function MapModal({ show, handleMapClose, from }) {
       default:
         break;
     }
+  };
+
+  useEffect(() => {
+    from === "order" &&
+      setTimeout(() => {
+        setIsFinished(true);
+      }, 5000);
+  }, []);
+
+  const handleFinished = () => {
+    cartDispatch({
+      type: "ADD_TRANSACTION",
+      payload: data,
+    });
+    cartDispatch({
+      type: "EMPTY_CART",
+    });
+    history.push("/");
+    handleMapClose();
   };
   return (
     <Modal show={show} dialogClassName="custom-modal" onHide={handleMapClose}>
