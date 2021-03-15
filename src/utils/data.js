@@ -182,7 +182,50 @@ export const dummyRestaurant = [
     range: 3.6,
     logo: kfc,
     totalvisited: 100,
-    menu: [],
+    menu: [
+      {
+        id: 1,
+        title: "Crispy Box",
+        price: 15000,
+        photo:
+          "https://files.kfcku.com/uploads/media/dummy/food/kfc-web_crispy-box_l.png",
+      },
+      {
+        id: 2,
+        title: "Wings Bucket",
+        price: 20000,
+        photo:
+          "https://files.kfcku.com/uploads/media/food-menu/spesial/kfc-web_wingsbucket_l.png",
+      },
+      {
+        id: 3,
+        title: "Colonel Yakiniku Combo",
+        price: 25000,
+        photo:
+          "https://files.kfcku.com/uploads/media/dummy/food/praktis/kfc-web_colonelyakinikuc_l.png",
+      },
+      {
+        id: 4,
+        title: "Zuper Krunch Combo",
+        price: 40000,
+        photo:
+          "https://files.kfcku.com/uploads/media/dummy/food/kfc-web_zuperkrunchc_l.png",
+      },
+      {
+        id: 5,
+        title: "Zuper Box",
+        price: 15000,
+        photo:
+          "https://files.kfcku.com/uploads/media/dummy/food/kfc-web_zuper-box_l.png",
+      },
+      {
+        id: 6,
+        title: "Zuper Krunch",
+        price: 10000,
+        photo:
+          "https://files.kfcku.com/uploads/media/food-menu/praktis/large/kfc-web_zuper-krunch_l_1.png",
+      },
+    ],
   },
   {
     id: 8,

@@ -5,14 +5,52 @@ import { useHistory } from "react-router-dom";
 
 // State Management
 import { UserContext } from "../contexts/userContext";
+import { CartContext } from "../contexts/cartContext";
 
 export default function PopularCard({ data, handleShowLogin }) {
   const history = useHistory();
   const { id, logo, title } = data;
   const { state: userState, dispatch: userDispatch } = useContext(UserContext);
+  const { state: cartState, dispatch: cartDispatch } = useContext(CartContext);
   const handleClick = () => {
     if (userState.isLogin) {
-      history.push(`/detail/${id}`);
+      if (cartState.carts.length == 0) {
+        cartDispatch({
+          type: "CURRENT_RESTAURANT",
+          payload: {
+            id,
+            title,
+          },
+        });
+        history.push(`/detail/${id}`);
+      } else {
+        if (
+          cartState.carts.length == 0 &&
+          cartState.currentRestaurant !== null
+        ) {
+          cartDispatch({
+            type: "CURRENT_RESTAURANT",
+            payload: {
+              id,
+              title,
+            },
+          });
+          history.push(`/detail/${id}`);
+        } else {
+          if (cartState.currentRestaurant.title === title) {
+            cartDispatch({
+              type: "CURRENT_RESTAURANT",
+              payload: {
+                id,
+                title,
+              },
+            });
+            history.push(`/detail/${id}`);
+          } else {
+            alert("oaewkok");
+          }
+        }
+      }
     } else {
       handleShowLogin();
     }
