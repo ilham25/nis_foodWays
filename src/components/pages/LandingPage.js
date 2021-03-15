@@ -1,6 +1,14 @@
 import { useEffect, useState, useContext } from "react";
 
-import { Container, Col, Row, Card, Button } from "react-bootstrap";
+import {
+  Container,
+  Col,
+  Row,
+  Card,
+  Button,
+  Modal,
+  Alert,
+} from "react-bootstrap";
 
 // State Management
 import { UserContext } from "../../contexts/userContext";
@@ -16,6 +24,12 @@ import { dummyRestaurant } from "../../utils/data";
 export default function LandingPage({ handleShowLogin }) {
   const [popularRestaurant, setPopularRestaurant] = useState([]);
   const { state: userState, dispatch: userDispatch } = useContext(UserContext);
+
+  // Modal Handler
+  const [showAlert, setShowAlert] = useState(false);
+  const handleCloseAlert = () => setShowAlert(false);
+  const handleShowAlert = () => setShowAlert(true);
+
   const handlePopularRestaurant = () => {
     const sortedVisitRestaurant = dummyRestaurant
       .sort((a, b) => parseFloat(b.totalvisited) - parseFloat(a.totalvisited))
@@ -45,6 +59,7 @@ export default function LandingPage({ handleShowLogin }) {
                 data={popular}
                 key={popular.id}
                 handleShowLogin={handleShowLogin}
+                handleShowAlert={handleShowAlert}
               />
             ))}
           </Row>
@@ -62,6 +77,7 @@ export default function LandingPage({ handleShowLogin }) {
                   <RestaurantCard
                     key={restaurant.id}
                     handleShowLogin={handleShowLogin}
+                    handleShowAlert={handleShowAlert}
                     data={restaurant}
                   />
                 )
@@ -69,6 +85,11 @@ export default function LandingPage({ handleShowLogin }) {
           </Row>
         </Container>
       </div>
+      <Modal show={showAlert} onHide={handleCloseAlert}>
+        <Modal.Body className="text-center text-danger">
+          Please empty your cart before changing restaurant
+        </Modal.Body>
+      </Modal>
     </>
   );
 }

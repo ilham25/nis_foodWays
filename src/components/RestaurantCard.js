@@ -7,7 +7,11 @@ import { useHistory } from "react-router-dom";
 import { UserContext } from "../contexts/userContext";
 import { CartContext } from "../contexts/cartContext";
 
-export default function RestaurantCard({ handleShowLogin, data }) {
+export default function RestaurantCard({
+  handleShowLogin,
+  handleShowAlert,
+  data,
+}) {
   const history = useHistory();
   const { id, title, range, photo } = data;
   const { state: userState, dispatch: userDispatch } = useContext(UserContext);
@@ -18,9 +22,8 @@ export default function RestaurantCard({ handleShowLogin, data }) {
      * List Pengecekan :
      * 1. Belum login > tampilkan modal login > (RESTRICTED)
      * 2. Sudah Login > jumlah cart = 0 > masuk > (ACCEPTED)
-     * 3. Sudah Login > jumlah cart = 0 dan nama restaurant tidak kosong > masuk > (ACCEPTED)
-     * 4. Sudah Login > jumlah cart != 0 (berisi), tapi restaurant pilihan sama > masuk > (ACCEPTED)
-     * 5. Diluar kondisi diatas > tolak > tampilkan modal tidak bisa masuk ke restaurant lain sebelum cart kosong > (RESTRICTED)
+     * 3. Sudah Login > jumlah cart != 0 (berisi), tapi restaurant pilihan sama > masuk > (ACCEPTED)
+     * 4. Diluar kondisi diatas > tolak > tampilkan modal tidak bisa masuk ke restaurant lain sebelum cart kosong > (RESTRICTED)
      */
 
     if (userState.isLogin) {
@@ -35,8 +38,8 @@ export default function RestaurantCard({ handleShowLogin, data }) {
         history.push(`/detail/${id}`);
       } else {
         if (
-          cartState.carts.length == 0 &&
-          cartState.currentRestaurant !== null
+          cartState.carts.length !== 0 &&
+          cartState.currentRestaurant.title === title
         ) {
           cartDispatch({
             type: "CURRENT_RESTAURANT",
@@ -47,18 +50,7 @@ export default function RestaurantCard({ handleShowLogin, data }) {
           });
           history.push(`/detail/${id}`);
         } else {
-          if (cartState.currentRestaurant.title === title) {
-            cartDispatch({
-              type: "CURRENT_RESTAURANT",
-              payload: {
-                id,
-                title,
-              },
-            });
-            history.push(`/detail/${id}`);
-          } else {
-            alert("oaewkok");
-          }
+          handleShowAlert();
         }
       }
     } else {

@@ -7,7 +7,11 @@ import { useHistory } from "react-router-dom";
 import { UserContext } from "../contexts/userContext";
 import { CartContext } from "../contexts/cartContext";
 
-export default function PopularCard({ data, handleShowLogin }) {
+export default function PopularCard({
+  data,
+  handleShowLogin,
+  handleShowAlert,
+}) {
   const history = useHistory();
   const { id, logo, title } = data;
   const { state: userState, dispatch: userDispatch } = useContext(UserContext);
@@ -25,8 +29,8 @@ export default function PopularCard({ data, handleShowLogin }) {
         history.push(`/detail/${id}`);
       } else {
         if (
-          cartState.carts.length == 0 &&
-          cartState.currentRestaurant !== null
+          cartState.carts.length !== 0 &&
+          cartState.currentRestaurant.title === title
         ) {
           cartDispatch({
             type: "CURRENT_RESTAURANT",
@@ -37,18 +41,7 @@ export default function PopularCard({ data, handleShowLogin }) {
           });
           history.push(`/detail/${id}`);
         } else {
-          if (cartState.currentRestaurant.title === title) {
-            cartDispatch({
-              type: "CURRENT_RESTAURANT",
-              payload: {
-                id,
-                title,
-              },
-            });
-            history.push(`/detail/${id}`);
-          } else {
-            alert("oaewkok");
-          }
+          handleShowAlert();
         }
       }
     } else {

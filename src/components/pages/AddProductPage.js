@@ -59,10 +59,9 @@ function AddProductPage() {
         </Row>
       </Container>
       <Modal show={show} onHide={handleClose}>
-        <Modal.Header closeButton>
-          <Modal.Title className="text-warning">Success</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>Add Product</Modal.Body>
+        <Modal.Body className="text-warning text-center">
+          Success Add Product
+        </Modal.Body>
       </Modal>
     </div>
   );
