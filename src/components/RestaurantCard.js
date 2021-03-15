@@ -27,7 +27,10 @@ export default function RestaurantCard({ handleShowLogin, data }) {
       if (cartState.carts.length == 0) {
         cartDispatch({
           type: "CURRENT_RESTAURANT",
-          payload: title,
+          payload: {
+            id,
+            title,
+          },
         });
         history.push(`/detail/${id}`);
       } else {
@@ -37,14 +40,20 @@ export default function RestaurantCard({ handleShowLogin, data }) {
         ) {
           cartDispatch({
             type: "CURRENT_RESTAURANT",
-            payload: title,
+            payload: {
+              id,
+              title,
+            },
           });
           history.push(`/detail/${id}`);
         } else {
-          if (cartState.currentRestaurant === title) {
+          if (cartState.currentRestaurant.title === title) {
             cartDispatch({
               type: "CURRENT_RESTAURANT",
-              payload: title,
+              payload: {
+                id,
+                title,
+              },
             });
             history.push(`/detail/${id}`);
           } else {

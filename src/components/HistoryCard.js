@@ -4,7 +4,7 @@ import { Col, Card, Row, Button } from "react-bootstrap";
 import brandLogo from "../assets/svg/brand.svg";
 
 function HistoryCard({ userrole, data }) {
-  const { date, day, total, username, restaurant } = data;
+  const { date, day, total, user, restaurant } = data;
   return (
     <Col xs={12} md={12} className="mb-4">
       <Card style={{ border: "none" }}>
@@ -14,7 +14,7 @@ function HistoryCard({ userrole, data }) {
               <Row>
                 <Col>
                   <p className="heading font-weight-bold mb-1 h5">
-                    {userrole ? username : restaurant}
+                    {userrole ? user.fullname : restaurant.title}
                   </p>
                   <small className="">
                     <span className="font-weight-bold">{day},</span> {date}

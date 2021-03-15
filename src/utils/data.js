@@ -200,7 +200,8 @@ export const dummyIncome = [
     id: 1,
     name: "Sugeng No Pants",
     address: "Cileungsi",
-    products: "Paket Geprek, Paket ke..",
+    products:
+      "Paket Geprek, Paket keapwekoakewoaawoeaoewkoaewkoawkeoakweoawkeowke",
     status: 1,
   },
   {

@@ -43,16 +43,20 @@ export default function CartPage() {
   const [delivery, setDelivery] = useState(10000);
   const [total, setTotal] = useState(0);
   const [currentDate, setCurrentDate] = useState({});
+  const [listProducts, setListProducts] = useState([]);
 
   const history = useHistory();
 
   useEffect(() => {
     let tmpQty = 0;
     let tmpPrice = 0;
+
     cartState.carts.map((cart) => {
       tmpQty = tmpQty + cart.qty;
       tmpPrice = tmpPrice + cart.price * cart.qty;
+      setListProducts((prev) => [...prev, cart.title]);
     });
+
     setQuantity(tmpQty);
     setPrice(tmpPrice);
     setTotal(tmpPrice + delivery);
@@ -108,7 +112,7 @@ export default function CartPage() {
         <Row className="mb-4">
           <Col sm={12}>
             <h1 className="heading font-weight-bold">
-              {cartState.currentRestaurant}
+              {cartState.currentRestaurant.title}
             </h1>
           </Col>
         </Row>
@@ -213,10 +217,17 @@ export default function CartPage() {
         handleMapClose={handleMapDeliveryClose}
         from="order"
         data={{
+          id: Math.floor(Math.random() * Math.floor(100)),
           total,
-          username: userState.loggedUser.fullname,
+          user: {
+            id: userState.loggedUser.id,
+            fullname: userState.loggedUser.fullname,
+            location: userState.loggedUser.location,
+          },
           restaurant: cartState.currentRestaurant,
           ...currentDate,
+          listProducts,
+          status: 1,
         }}
       />
     </div>

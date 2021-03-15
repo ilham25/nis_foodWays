@@ -21,6 +21,7 @@ export default function RegisterModal({
 
     const localData = JSON.parse(localStorage.getItem(LOCAL_KEY));
     const { id, email, password, fullname, gender, phone, userrole } = data;
+    const products = userrole === "As Partner" && { products: [] };
     const userData = {
       id,
       email,
@@ -30,6 +31,8 @@ export default function RegisterModal({
       phone,
       userrole: userrole === "As Partner" ? 1 : 0,
       photo: imgProfile,
+      location: "LOCATION",
+      ...products,
     };
     const tempData = [...localData, userData];
     localStorage.setItem(LOCAL_KEY, JSON.stringify(tempData));

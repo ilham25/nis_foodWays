@@ -99,8 +99,14 @@ function ProfilePage() {
             <Row>
               {cartState.transactions.map((tran, index) =>
                 userState.loggedUser.userrole == 1
-                  ? tran.restaurant
-                  : tran.username === userState.loggedUser.fullname && (
+                  ? tran.restaurant.title === userState.loggedUser.fullname && (
+                      <HistoryCard
+                        key={index}
+                        userrole={userrole}
+                        data={tran}
+                      />
+                    )
+                  : tran.user.fullname === userState.loggedUser.fullname && (
                       <HistoryCard
                         key={index}
                         userrole={userrole}

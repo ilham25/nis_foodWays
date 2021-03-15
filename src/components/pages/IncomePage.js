@@ -1,4 +1,4 @@
-import { useEffect, useContext } from "react";
+import { useEffect, useContext, useState } from "react";
 
 import {
   Container,
@@ -13,6 +13,7 @@ import { useHistory } from "react-router-dom";
 
 // State Management
 import { UserContext } from "../../contexts/userContext";
+import { CartContext } from "../../contexts/cartContext";
 
 // Assets
 import actionSuccess from "../../assets/svg/action-success.svg";
@@ -24,10 +25,22 @@ import { dummyIncome } from "../../utils/data";
 function IncomePage() {
   const history = useHistory();
   const { state: userState, dispatch: userDispatch } = useContext(UserContext);
+  const { state: cartState, dispatch: cartDispatch } = useContext(CartContext);
+
+  const [incomeList, setIncomeList] = useState([]);
 
   useEffect(() => {
     userState.loggedUser.userrole !== 1 && history.push("/");
+
+    // setIncomeList()
   }, []);
+
+  useEffect(() => {
+    const filteredIncome = cartState.transactions.filter(
+      (income) => income.restaurant.title == userState.loggedUser.fullname
+    );
+    setIncomeList(filteredIncome);
+  }, [cartState.transactions]);
 
   /**
    *
@@ -111,12 +124,23 @@ function IncomePage() {
                   </tr>
                 </thead>
                 <tbody>
-                  {dummyIncome.map((income, index) => (
+                  {incomeList.map((income, index) => (
                     <tr>
                       <td>{index + 1}</td>
-                      <td>{income.name}</td>
-                      <td>{income.address}</td>
-                      <td>{income.products}</td>
+                      <td>{income.user.fullname}</td>
+                      <td>{income.user.location}</td>
+                      <td>
+                        <div
+                          style={{
+                            width: "200px",
+                            overflow: "hidden",
+                            whiteSpace: "nowrap",
+                            textOverflow: "ellipsis",
+                          }}
+                        >
+                          {`${income.listProducts}, `}
+                        </div>
+                      </td>
                       <td className="text-center">
                         {handleStatus(income.status)}
                       </td>

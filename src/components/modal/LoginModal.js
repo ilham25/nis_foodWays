@@ -48,7 +48,8 @@ export default function LoginModal({
     };
 
     if (handleLogin(userData)) {
-      history.push("/");
+      const userData = JSON.parse(localStorage.getItem(`${LOCAL_KEY}-login`));
+      userData.userrole == 1 ? history.push("/income") : history.push("/");
       handleCloseLogin();
     }
   };
