@@ -39,6 +39,8 @@ const reducer = (state, action) => {
 export const UserContextProvider = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, initialState);
   useEffect(() => {
+    !localStorage.getItem(LOCAL_KEY) &&
+      localStorage.setItem(LOCAL_KEY, JSON.stringify([]));
     const getUser = localStorage.getItem(`${LOCAL_KEY}-login`);
     if (getUser) {
       dispatch({
