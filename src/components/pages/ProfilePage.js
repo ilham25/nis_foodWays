@@ -8,7 +8,7 @@ import { UserContext } from "../../contexts/userContext";
 import { CartContext } from "../../contexts/cartContext";
 
 // Components
-import HistoryCard from "../HistoryCard";
+import HistoryCard from "../reusable/HistoryCard";
 
 // Assets
 import imgProfileBig from "../../assets/img/profile-big.png";

@@ -61,6 +61,11 @@
   max-width: none !important;
 }
 
+.form-modal {
+  width: 420px !important;
+  max-width: none !important;
+}
+
 .custom-input {
   font-size: 0.9em;
 }

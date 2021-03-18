@@ -6,6 +6,9 @@ import { useHistory } from "react-router-dom";
 // State Management
 import { UserContext } from "../../contexts/userContext";
 
+// Components
+import CustomFormInput from "../reusable/CustomFormInput";
+
 export default function LoginModal({
   showLogin,
   handleCloseLogin,
@@ -55,12 +58,22 @@ export default function LoginModal({
   };
 
   return (
-    <Modal show={showLogin} onHide={handleCloseLogin}>
+    <Modal
+      show={showLogin}
+      onHide={handleCloseLogin}
+      dialogClassName="form-modal"
+    >
       <Modal.Body className="px-4 py-5">
         <h2 className="text-warning mb-4">Login</h2>
         <Form className="d-flex flex-column" onSubmit={handleSubmit}>
           <Form.Group controlId="email">
-            <Form.Control
+            {/* <Form.Control
+              type="email"
+              placeholder="Email"
+              name="email"
+              required
+            /> */}
+            <CustomFormInput
               type="email"
               placeholder="Email"
               name="email"
@@ -69,7 +82,7 @@ export default function LoginModal({
           </Form.Group>
 
           <Form.Group controlId="password">
-            <Form.Control
+            <CustomFormInput
               type="password"
               placeholder="Password"
               name="password"

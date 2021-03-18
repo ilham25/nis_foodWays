@@ -5,6 +5,8 @@ import { useHistory } from "react-router-dom";
 
 // Components
 import MapModal from "../modal/MapModal";
+import CustomFormInput from "../reusable/CustomFormInput";
+import CustomFormFile from "../reusable/CustomFormFile";
 
 // Assets
 import iconMap from "../../assets/svg/map.svg";
@@ -38,12 +40,19 @@ function EditProfilePage() {
               <Row>
                 <Col xs={12} lg={9}>
                   <Form.Group>
-                    <Form.Control type="text" placeholder="Full Name" />
+                    <CustomFormInput
+                      isBrown={true}
+                      type="text"
+                      placeholder="Full Name"
+                    />
                   </Form.Group>
                 </Col>
                 <Col xs={12} lg={3}>
-                  <Form.Group>
-                    <Form.File label="Attach image" data-browse="📎" custom />
+                  <Form.Group controlId="inputFile">
+                    <CustomFormFile
+                      placeholder="Attach Image"
+                      name="inputFile"
+                    />
                   </Form.Group>
                 </Col>
               </Row>
@@ -51,28 +60,40 @@ function EditProfilePage() {
               <Row>
                 <Col xs={12} lg={12}>
                   <Form.Group>
-                    <Form.Control type="email" placeholder="Email" />
+                    <CustomFormInput
+                      isBrown={true}
+                      type="email"
+                      placeholder="Email"
+                    />
                   </Form.Group>
                 </Col>
               </Row>
               <Row>
                 <Col xs={12} lg={12}>
                   <Form.Group>
-                    <Form.Control type="password" placeholder="Password" />
+                    <CustomFormInput
+                      isBrown={true}
+                      type="password"
+                      placeholder="Password"
+                    />
                   </Form.Group>
                 </Col>
               </Row>
               <Row>
                 <Col xs={12} lg={9}>
                   <Form.Group>
-                    <Form.Control type="text" placeholder="Location" />
+                    <CustomFormInput
+                      isBrown={true}
+                      type="text"
+                      placeholder="Location"
+                    />
                   </Form.Group>
                 </Col>
                 <Col xs={12} lg={3}>
                   <Button
                     variant="brown"
                     className="w-100"
-                    size="lg"
+                    style={{ height: "50px" }}
                     onClick={handleMapShow}
                   >
                     Select On Map

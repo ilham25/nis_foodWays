@@ -3,7 +3,7 @@ import { useContext } from "react";
 import { Col, Card, Button } from "react-bootstrap";
 
 // State Management
-import { CartContext } from "../contexts/cartContext";
+import { CartContext } from "../../contexts/cartContext";
 
 export default function MenuCard({ data }) {
   const { state: cartState, dispatch: cartDispatch } = useContext(CartContext);
@@ -21,13 +21,13 @@ export default function MenuCard({ data }) {
         <Card.Img
           variant="top"
           src={photo}
-          height="134"
-          className="p-2"
+          height="175"
+          className="p-3"
           style={{ objectFit: "cover" }}
         />
-        <Card.Body>
+        <Card.Body className="px-3 pt-0">
           <Card.Title
-            className="heading font-weight-bolder"
+            className="heading font-weight-bolder mb-0"
             style={{ height: "40px" }}
           >
             {title}

@@ -4,8 +4,8 @@ import { Col, Card } from "react-bootstrap";
 import { useHistory } from "react-router-dom";
 
 // State Management
-import { UserContext } from "../contexts/userContext";
-import { CartContext } from "../contexts/cartContext";
+import { UserContext } from "../../contexts/userContext";
+import { CartContext } from "../../contexts/cartContext";
 
 export default function RestaurantCard({
   handleShowLogin,
@@ -63,11 +63,11 @@ export default function RestaurantCard({
         <Card.Img
           variant="top"
           src={photo}
-          height="134"
-          className="p-2"
+          height="175"
+          className="p-3"
           style={{ objectFit: "cover" }}
         />
-        <Card.Body>
+        <Card.Body className="px-3 pt-0">
           <Card.Title className="heading font-weight-bolder">
             {title}
           </Card.Title>

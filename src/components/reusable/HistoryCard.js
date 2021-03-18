@@ -1,7 +1,7 @@
 import { Col, Card, Row, Button } from "react-bootstrap";
 
 // Assets
-import brandLogo from "../assets/svg/brand.svg";
+import brandLogo from "../../assets/svg/brand.svg";
 
 function HistoryCard({ userrole, data }) {
   const { date, day, total, user, restaurant } = data;

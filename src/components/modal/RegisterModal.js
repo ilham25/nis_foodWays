@@ -3,6 +3,9 @@ import { Modal, Button, Form } from "react-bootstrap";
 // Assets
 import imgProfile from "../../assets/img/profile.png";
 
+// Components
+import CustomFormInput from "../reusable/CustomFormInput";
+
 export default function RegisterModal({
   showRegister,
   handleCloseRegister,
@@ -53,12 +56,16 @@ export default function RegisterModal({
     openLogin();
   };
   return (
-    <Modal show={showRegister} onHide={handleCloseRegister}>
+    <Modal
+      show={showRegister}
+      onHide={handleCloseRegister}
+      dialogClassName="form-modal"
+    >
       <Modal.Body className="px-4 py-5">
         <h2 className="text-warning mb-4">Register</h2>
         <Form className="d-flex flex-column" onSubmit={handleSubmit}>
           <Form.Group controlId="email">
-            <Form.Control
+            <CustomFormInput
               type="email"
               placeholder="Email"
               name="email"
@@ -67,7 +74,7 @@ export default function RegisterModal({
           </Form.Group>
 
           <Form.Group controlId="password">
-            <Form.Control
+            <CustomFormInput
               type="password"
               placeholder="Password"
               name="password"
@@ -75,7 +82,7 @@ export default function RegisterModal({
             />
           </Form.Group>
           <Form.Group controlId="fullname">
-            <Form.Control
+            <CustomFormInput
               type="text"
               placeholder="Full Name"
               name="fullname"
@@ -83,7 +90,7 @@ export default function RegisterModal({
             />
           </Form.Group>
           <Form.Group controlId="gender">
-            <Form.Control
+            <CustomFormInput
               type="text"
               placeholder="Gender"
               name="gender"
@@ -91,15 +98,23 @@ export default function RegisterModal({
             />
           </Form.Group>
           <Form.Group controlId="phone">
-            <Form.Control
+            <CustomFormInput
               type="text"
               placeholder="Phone"
               name="phone"
               required
             />
           </Form.Group>
-          <Form.Group controlId="userrole" placeholder="njir" name="userrole">
-            <Form.Control as="select">
+          <Form.Group controlId="userrole" name="userrole">
+            <Form.Control
+              as="select"
+              style={{
+                height: "50px",
+                boxShadow: "none",
+                backgroundColor: "rgba(210, 210, 210, 0.25)",
+                border: "3px solid #D2D2D2",
+              }}
+            >
               <option>As User</option>
               <option>As Partner</option>
             </Form.Control>

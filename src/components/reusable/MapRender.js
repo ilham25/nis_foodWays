@@ -12,9 +12,9 @@ mapboxgl.accessToken =
 
 export default function MapRender() {
   const mapContainer = useRef(null);
-  const [lng, setLng] = useState(106.73);
-  const [lat, setLat] = useState(-6.3);
-  const [zoom, setZoom] = useState(9);
+  const [lng, setLng] = useState(106.735157);
+  const [lat, setLat] = useState(-6.301431);
+  const [zoom, setZoom] = useState(15);
 
   useEffect(() => {
     const map = new mapboxgl.Map({

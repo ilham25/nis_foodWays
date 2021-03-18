@@ -4,7 +4,7 @@ import { Container, Row, Col } from "react-bootstrap";
 import { useParams } from "react-router-dom";
 
 // Components
-import MenuCard from "../MenuCard";
+import MenuCard from "../reusable/MenuCard";
 
 // Dummy data
 import { dummyRestaurant } from "../../utils/data";

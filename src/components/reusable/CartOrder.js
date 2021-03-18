@@ -3,10 +3,10 @@ import { useContext, useState } from "react";
 import { Row, Col, Button } from "react-bootstrap";
 
 // State Management
-import { CartContext } from "../contexts/cartContext";
+import { CartContext } from "../../contexts/cartContext";
 
 // Assets
-import iconRemove from "../assets/svg/remove.svg";
+import iconRemove from "../../assets/svg/remove.svg";
 
 export default function CartOrder({ data }) {
   const { state: cartState, dispatch: cartDispatch } = useContext(CartContext);

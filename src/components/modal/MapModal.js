@@ -7,7 +7,7 @@ import { useHistory } from "react-router-dom";
 import { CartContext } from "../../contexts/cartContext";
 
 // Components
-import MapRender from "../MapRender";
+import MapRender from "../reusable/MapRender";
 
 // Assets
 import iconMapPointer from "../../assets/svg/map-pointer.svg";

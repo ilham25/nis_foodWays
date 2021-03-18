@@ -15,12 +15,11 @@ import { UserContext } from "../../contexts/userContext";
 import { CartContext } from "../../contexts/cartContext";
 
 // Components
-import CartOrder from "../CartOrder";
+import CartOrder from "../reusable/CartOrder";
 import MapModal from "../modal/MapModal";
 
 // Assets
-import geprek1 from "../../assets/img/restaurant/bensu.png";
-import geprek2 from "../../assets/img/menu/geprek2.png";
+
 import iconMap from "../../assets/svg/map.svg";
 import iconMapPointer from "../../assets/svg/map-pointer.svg";
 
@@ -127,7 +126,13 @@ export default function CartPage() {
               <FormControl
                 value="Harbour Building"
                 size="lg"
-                style={{ fontSize: "0.9em" }}
+                style={{
+                  fontSize: "0.9em",
+                  height: "50px",
+                  boxShadow: "none",
+                  backgroundColor: "white",
+                  border: "none",
+                }}
               />
             </InputGroup>
           </Col>
@@ -135,8 +140,8 @@ export default function CartPage() {
             <Button
               variant="brown"
               className="w-100"
-              size="lg"
               onClick={handleMapShow}
+              style={{ height: "50px" }}
             >
               Select On Map
               <img src={iconMap} alt="map icon" className="ml-2" />

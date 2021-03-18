@@ -15,8 +15,8 @@ import { UserContext } from "../../contexts/userContext";
 
 // Components
 import HeroSection from "./HeroSection";
-import PopularCard from "../PopularCard";
-import RestaurantCard from "../RestaurantCard";
+import PopularCard from "../reusable/PopularCard";
+import RestaurantCard from "../reusable/RestaurantCard";
 
 // Dummy data
 import { dummyRestaurant } from "../../utils/data";

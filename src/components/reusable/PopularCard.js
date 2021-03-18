@@ -4,8 +4,8 @@ import { Container, Col, Row } from "react-bootstrap";
 import { useHistory } from "react-router-dom";
 
 // State Management
-import { UserContext } from "../contexts/userContext";
-import { CartContext } from "../contexts/cartContext";
+import { UserContext } from "../../contexts/userContext";
+import { CartContext } from "../../contexts/cartContext";
 
 export default function PopularCard({
   data,

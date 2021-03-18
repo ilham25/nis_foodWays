@@ -10,7 +10,7 @@ import { CartContextProvider } from "./contexts/cartContext";
 import LoginModal from "./components/modal/LoginModal";
 import RegisterModal from "./components/modal/RegisterModal";
 import LandingPage from "./components/pages/LandingPage";
-import Header from "./components/Header";
+import Header from "./components/reusable/Header";
 import DetailProductPage from "./components/pages/DetailProductPage";
 import CartPage from "./components/pages/CartPage";
 import ProfilePage from "./components/pages/ProfilePage";

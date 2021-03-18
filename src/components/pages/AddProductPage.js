@@ -3,6 +3,10 @@ import { useState } from "react";
 import { Container, Col, Row, Form, Button, Modal } from "react-bootstrap";
 import { useHistory } from "react-router-dom";
 
+// Components
+import CustomFormInput from "../reusable/CustomFormInput";
+import CustomFormFile from "../reusable/CustomFormFile";
+
 function AddProductPage() {
   const history = useHistory();
 
@@ -29,12 +33,19 @@ function AddProductPage() {
               <Row>
                 <Col xs={12} lg={9}>
                   <Form.Group>
-                    <Form.Control type="text" placeholder="Title" />
+                    <CustomFormInput
+                      isBrown="true"
+                      type="text"
+                      placeholder="Title"
+                    />
                   </Form.Group>
                 </Col>
                 <Col xs={12} lg={3}>
-                  <Form.Group>
-                    <Form.File label="Attach image" data-browse="📎" custom />
+                  <Form.Group controlId="inputFile">
+                    <CustomFormFile
+                      placeholder="Attach Image"
+                      name="inputFile"
+                    />
                   </Form.Group>
                 </Col>
               </Row>
@@ -42,7 +53,11 @@ function AddProductPage() {
               <Row>
                 <Col xs={12} lg={12}>
                   <Form.Group>
-                    <Form.Control type="text" placeholder="Price" />
+                    <CustomFormInput
+                      isBrown="true"
+                      type="text"
+                      placeholder="Price"
+                    />
                   </Form.Group>
                 </Col>
               </Row>

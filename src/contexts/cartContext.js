@@ -51,7 +51,7 @@ const reducer = (state, action) => {
           cart.id == payload.id
             ? {
                 ...cart,
-                qty: cart.qty > 0 ? cart.qty - 1 : cart.qty,
+                qty: cart.qty > 1 ? cart.qty - 1 : cart.qty,
               }
             : cart
         );
