@@ -9,6 +9,7 @@ import {
   Modal,
   Alert,
 } from "react-bootstrap";
+import { motion } from "framer-motion";
 
 // State Management
 import { UserContext } from "../../contexts/userContext";
@@ -42,7 +43,12 @@ export default function LandingPage({ handleShowLogin }) {
   }, []);
 
   return (
-    <>
+    <motion.div
+      initial={{ x: "100%" }}
+      animate={{ x: 0 }}
+      exit={{ x: "-100%" }}
+      transition={{ duration: 0.5 }}
+    >
       <HeroSection />
       <div className="bg-grey">
         <Container className="py-5">
@@ -90,6 +96,6 @@ export default function LandingPage({ handleShowLogin }) {
           Please empty your cart before changing restaurant
         </Modal.Body>
       </Modal>
-    </>
+    </motion.div>
   );
 }

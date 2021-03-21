@@ -10,6 +10,7 @@ import {
   Table,
 } from "react-bootstrap";
 import { useHistory } from "react-router-dom";
+import { motion } from "framer-motion";
 
 // State Management
 import { UserContext } from "../../contexts/userContext";
@@ -98,7 +99,13 @@ function IncomePage() {
     }
   };
   return (
-    <div className="bg-grey py-5 mt-4">
+    <motion.div
+      initial={{ x: "100%" }}
+      animate={{ x: 0 }}
+      exit={{ x: "-100%" }}
+      transition={{ duration: 0.5 }}
+      className="bg-grey py-5 mt-4"
+    >
       <Container>
         <Row className="mb-4">
           <Col xs={12}>
@@ -155,7 +162,7 @@ function IncomePage() {
           </Col>
         </Row>
       </Container>
-    </div>
+    </motion.div>
   );
 }
 

@@ -2,6 +2,7 @@ import { useState } from "react";
 
 import { Container, Col, Row, Form, Button } from "react-bootstrap";
 import { useHistory } from "react-router-dom";
+import { motion } from "framer-motion";
 
 // Components
 import MapModal from "../modal/MapModal";
@@ -25,7 +26,13 @@ function EditProfilePage() {
     history.push("/profile");
   };
   return (
-    <div className="bg-grey py-5 mt-4">
+    <motion.div
+      initial={{ x: "100%" }}
+      animate={{ x: 0 }}
+      exit={{ x: "-100%" }}
+      transition={{ duration: 0.5 }}
+      className="bg-grey py-5 mt-4"
+    >
       <Container>
         <Row className="mb-4">
           <Col xs={12}>
@@ -113,7 +120,7 @@ function EditProfilePage() {
         </Row>
       </Container>
       <MapModal show={show} handleMapClose={handleMapClose} from="user" />
-    </div>
+    </motion.div>
   );
 }
 

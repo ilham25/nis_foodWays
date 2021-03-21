@@ -1,6 +1,12 @@
 import { useState, useEffect } from "react";
 
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  useLocation,
+} from "react-router-dom";
+import { AnimatePresence } from "framer-motion";
 
 // State Management
 import { UserContextProvider } from "./contexts/userContext";
@@ -38,6 +44,7 @@ function App() {
             handleShowLogin={handleShowLogin}
             handleShowRegister={handleShowRegister}
           />
+
           <Switch>
             <Route exact path="/">
               <LandingPage handleShowLogin={handleShowLogin} />
@@ -59,6 +66,7 @@ function App() {
 
             <PrivateRoute exact path="/income" component={IncomePage} />
           </Switch>
+
           <LoginModal
             handleCloseLogin={handleCloseLogin}
             handleShowRegister={handleShowRegister}
