@@ -24,7 +24,7 @@ export default function MapRender({ isMarker }) {
   useEffect(() => {
     const map = new mapboxgl.Map({
       container: mapContainer.current,
-      style: "mapbox://styles/mapbox/streets-v9",
+      style: "mapbox://styles/mapbox/streets-v11",
       center: [lng, lat],
       zoom: zoom,
     });

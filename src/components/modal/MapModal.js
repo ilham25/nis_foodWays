@@ -78,7 +78,11 @@ function MapModal({ show, handleMapClose, from, data }) {
             </Row>
             <Row>
               <Col>
-                <Button variant="brown" className="w-100">
+                <Button
+                  onClick={handleMapClose}
+                  variant="brown"
+                  className="w-100"
+                >
                   Confirm Location
                 </Button>
               </Col>
@@ -185,7 +189,11 @@ function MapModal({ show, handleMapClose, from, data }) {
             </Row>
             <Row>
               <Col>
-                <Button variant="brown" className="w-100">
+                <Button
+                  onClick={handleMapClose}
+                  variant="brown"
+                  className="w-100"
+                >
                   Confirm Location
                 </Button>
               </Col>
