@@ -8,6 +8,9 @@ import { motion } from "framer-motion";
 import CustomFormInput from "../reusable/CustomFormInput";
 import CustomFormFile from "../reusable/CustomFormFile";
 
+// Animations
+import { pageInit } from "../../utils/animVariants";
+
 function AddProductPage() {
   const history = useHistory();
 
@@ -22,10 +25,10 @@ function AddProductPage() {
   };
   return (
     <motion.div
-      initial={{ x: "100%" }}
-      animate={{ x: 0 }}
-      exit={{ x: "-100%" }}
-      transition={{ duration: 0.5 }}
+      variants={pageInit}
+      initial="hidden"
+      animate="visible"
+      exit="exit"
       className="bg-grey py-5 mt-4"
     >
       <Container>

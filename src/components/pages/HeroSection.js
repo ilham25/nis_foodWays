@@ -1,4 +1,5 @@
 import { Container, Col, Row } from "react-bootstrap";
+import { motion } from "framer-motion";
 
 // SVG
 import pizza from "../../assets/svg/pizza.svg";
@@ -30,7 +31,14 @@ export default function HeroSection() {
             </div>
           </Col>
           <Col xs={12} lg={6} className="text-center">
-            <img src={pizza} alt="pizza" className="w-75 w-lg-100" />
+            <motion.img
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.5, delay: 0.5 }}
+              src={pizza}
+              alt="pizza"
+              className="w-75 w-lg-100"
+            />
           </Col>
         </Row>
       </Container>

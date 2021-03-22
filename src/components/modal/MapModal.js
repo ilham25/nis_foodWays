@@ -5,6 +5,7 @@ import { useHistory } from "react-router-dom";
 
 // State Management
 import { CartContext } from "../../contexts/cartContext";
+import { UserContext } from "../../contexts/userContext";
 
 // Components
 import MapRender from "../reusable/MapRender";
@@ -15,7 +16,25 @@ import iconMapPointer from "../../assets/svg/map-pointer.svg";
 function MapModal({ show, handleMapClose, from, data }) {
   const history = useHistory();
   const [isFinished, setIsFinished] = useState(false);
+
+  const [place, setPlace] = useState("");
+  const [address, setAddress] = useState("");
+
   const { state: cartState, dispatch: cartDispatch } = useContext(CartContext);
+  const { state: userState, dispatch: userDispatch } = useContext(UserContext);
+
+  const fetchLocation = async () => {
+    const { lng, lat } = userState.orderLocation;
+    const token =
+      "pk.eyJ1IjoiaWxoYW0yNSIsImEiOiJja20yczc0dm0zOWczMndwMzVmdmJ1bjI4In0.1l2Zgxjy5R0iW2SlySO_fQ";
+    const apiUrl = `https://api.mapbox.com/geocoding/v5/mapbox.places/${lng},${lat}.json?limit=1&access_token=${token}`;
+
+    const api = await fetch(apiUrl);
+    const response = await api.json();
+
+    setPlace(response.features[0].text);
+    setAddress(response.features[0].place_name);
+  };
 
   const renderDialog = () => {
     switch (from) {
@@ -48,14 +67,11 @@ function MapModal({ show, handleMapClose, from, data }) {
               <Col lg={10}>
                 <Row>
                   <Col lg={12}>
-                    <small className="font-weight-bold">Harbour Building</small>
+                    <small className="font-weight-bold">{place}</small>
                   </Col>
 
                   <Col lg={12} style={{ lineHeight: "1" }}>
-                    <small className="text-sm">
-                      Jl. Elang IV No.48, Sawah Lama, Kec. Ciputat, Kota
-                      Tangerang Selatan, Banten 15413, Indonesia
-                    </small>
+                    <small className="text-sm">{address}</small>
                   </Col>
                 </Row>
               </Col>
@@ -98,14 +114,11 @@ function MapModal({ show, handleMapClose, from, data }) {
               <Col lg={10}>
                 <Row>
                   <Col lg={12}>
-                    <small className="font-weight-bold">Harbour Building</small>
+                    <small className="font-weight-bold">{place}</small>
                   </Col>
 
                   <Col lg={12} style={{ lineHeight: "1" }}>
-                    <small className="text-sm">
-                      Jl. Elang IV No.48, Sawah Lama, Kec. Ciputat, Kota
-                      Tangerang Selatan, Banten 15413, Indonesia
-                    </small>
+                    <small className="text-sm">{address}</small>
                   </Col>
                 </Row>
               </Col>
@@ -161,14 +174,11 @@ function MapModal({ show, handleMapClose, from, data }) {
               <Col lg={10}>
                 <Row>
                   <Col lg={12}>
-                    <small className="font-weight-bold">Harbour Building</small>
+                    <small className="font-weight-bold">{place}</small>
                   </Col>
 
                   <Col lg={12} style={{ lineHeight: "1" }}>
-                    <small className="text-sm">
-                      Jl. Elang IV No.48, Sawah Lama, Kec. Ciputat, Kota
-                      Tangerang Selatan, Banten 15413, Indonesia
-                    </small>
+                    <small className="text-sm">{address}</small>
                   </Col>
                 </Row>
               </Col>
@@ -190,11 +200,13 @@ function MapModal({ show, handleMapClose, from, data }) {
   };
 
   useEffect(() => {
-    from === "order" &&
-      setTimeout(() => {
-        setIsFinished(true);
-      }, 5000);
-  }, []);
+    // from === "order" &&
+    //   setTimeout(() => {
+    //     setIsFinished(true);
+    //   }, 5000);
+
+    fetchLocation();
+  }, [userState.orderLocation]);
 
   const handleFinished = () => {
     cartDispatch({
@@ -204,13 +216,15 @@ function MapModal({ show, handleMapClose, from, data }) {
     cartDispatch({
       type: "EMPTY_CART",
     });
-    history.push("/");
+    history.push("/profile");
     handleMapClose();
   };
   return (
     <Modal show={show} dialogClassName="custom-modal" onHide={handleMapClose}>
       <Modal.Body style={{ position: "relative" }}>
-        <MapRender />
+        <MapRender
+          isMarker={from === "delivery" || (from === "user" && true)}
+        />
         {renderDialog()}
       </Modal.Body>
     </Modal>

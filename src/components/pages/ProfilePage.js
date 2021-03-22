@@ -15,6 +15,9 @@ import HistoryCard from "../reusable/HistoryCard";
 import imgProfileBig from "../../assets/img/profile-big.png";
 import bensu from "../../assets/img/restaurant/bensu.png";
 
+// Animations
+import { pageInit } from "../../utils/animVariants";
+
 function ProfilePage() {
   const { state: userState, dispatch: userDispatch } = useContext(UserContext);
   const { state: cartState, dispatch: cartDispatch } = useContext(CartContext);
@@ -30,10 +33,10 @@ function ProfilePage() {
 
   return (
     <motion.div
-      initial={{ x: "100%" }}
-      animate={{ x: 0 }}
-      exit={{ x: "-100%" }}
-      transition={{ duration: 0.5 }}
+      variants={pageInit}
+      initial="hidden"
+      animate="visible"
+      exit="exit"
       className="bg-grey py-5 mt-4"
     >
       <Container>

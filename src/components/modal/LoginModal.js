@@ -1,6 +1,6 @@
 import { useContext } from "react";
 
-import { Modal, Button, Form } from "react-bootstrap";
+import { Modal, Button, Form, Row, Col } from "react-bootstrap";
 import { useHistory } from "react-router-dom";
 
 // State Management
@@ -67,12 +67,6 @@ export default function LoginModal({
         <h2 className="text-warning mb-4">Login</h2>
         <Form className="d-flex flex-column" onSubmit={handleSubmit}>
           <Form.Group controlId="email">
-            {/* <Form.Control
-              type="email"
-              placeholder="Email"
-              name="email"
-              required
-            /> */}
             <CustomFormInput
               type="email"
               placeholder="Email"

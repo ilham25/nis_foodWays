@@ -1,11 +1,6 @@
 import { useState, useEffect } from "react";
 
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  useLocation,
-} from "react-router-dom";
+import { Switch, Route, useLocation } from "react-router-dom";
 import { AnimatePresence } from "framer-motion";
 
 // State Management
@@ -26,6 +21,7 @@ import EditProfilePage from "./components/pages/EditProfilePage";
 import PrivateRoute from "./components/routes/PrivateRoute";
 
 function App() {
+  const location = useLocation();
   // Login modal stuff
   const [showLogin, setShowLogin] = useState(false);
   const handleCloseLogin = () => setShowLogin(false);
@@ -39,13 +35,13 @@ function App() {
   return (
     <CartContextProvider>
       <UserContextProvider>
-        <Router>
-          <Header
-            handleShowLogin={handleShowLogin}
-            handleShowRegister={handleShowRegister}
-          />
+        <Header
+          handleShowLogin={handleShowLogin}
+          handleShowRegister={handleShowRegister}
+        />
 
-          <Switch>
+        <AnimatePresence exitBeforeEnter>
+          <Switch location={location} key={location.key}>
             <Route exact path="/">
               <LandingPage handleShowLogin={handleShowLogin} />
             </Route>
@@ -53,31 +49,27 @@ function App() {
               <DetailProductPage />
             </Route>
             <PrivateRoute exact path="/cart" component={CartPage} />
-
             <PrivateRoute exact path="/profile" component={ProfilePage} />
-
             <PrivateRoute
               exact
               path="/profile/edit"
               component={EditProfilePage}
             />
-
             <PrivateRoute exact path="/add" component={AddProductPage} />
-
             <PrivateRoute exact path="/income" component={IncomePage} />
           </Switch>
+        </AnimatePresence>
 
-          <LoginModal
-            handleCloseLogin={handleCloseLogin}
-            handleShowRegister={handleShowRegister}
-            showLogin={showLogin}
-          />
-          <RegisterModal
-            handleCloseRegister={handleCloseRegister}
-            handleShowLogin={handleShowLogin}
-            showRegister={showRegister}
-          />
-        </Router>
+        <LoginModal
+          handleCloseLogin={handleCloseLogin}
+          handleShowRegister={handleShowRegister}
+          showLogin={showLogin}
+        />
+        <RegisterModal
+          handleCloseRegister={handleCloseRegister}
+          handleShowLogin={handleShowLogin}
+          showRegister={showRegister}
+        />
       </UserContextProvider>
     </CartContextProvider>
   );

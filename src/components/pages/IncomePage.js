@@ -23,6 +23,9 @@ import actionCancel from "../../assets/svg/action-cancel.svg";
 // Dummy data
 import { dummyIncome } from "../../utils/data";
 
+// Animations
+import { pageInit } from "../../utils/animVariants";
+
 function IncomePage() {
   const history = useHistory();
   const { state: userState, dispatch: userDispatch } = useContext(UserContext);
@@ -100,10 +103,10 @@ function IncomePage() {
   };
   return (
     <motion.div
-      initial={{ x: "100%" }}
-      animate={{ x: 0 }}
-      exit={{ x: "-100%" }}
-      transition={{ duration: 0.5 }}
+      variants={pageInit}
+      initial="hidden"
+      animate="visible"
+      exit="exit"
       className="bg-grey py-5 mt-4"
     >
       <Container>

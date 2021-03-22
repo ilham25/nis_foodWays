@@ -12,6 +12,9 @@ import CustomFormFile from "../reusable/CustomFormFile";
 // Assets
 import iconMap from "../../assets/svg/map.svg";
 
+// Animations
+import { pageInit } from "../../utils/animVariants";
+
 function EditProfilePage() {
   const history = useHistory();
   const currentUser = JSON.parse(localStorage.getItem("ways-food-user-login"));
@@ -27,10 +30,10 @@ function EditProfilePage() {
   };
   return (
     <motion.div
-      initial={{ x: "100%" }}
-      animate={{ x: 0 }}
-      exit={{ x: "-100%" }}
-      transition={{ duration: 0.5 }}
+      variants={pageInit}
+      initial="hidden"
+      animate="visible"
+      exit="exit"
       className="bg-grey py-5 mt-4"
     >
       <Container>

@@ -22,6 +22,9 @@ import RestaurantCard from "../reusable/RestaurantCard";
 // Dummy data
 import { dummyRestaurant } from "../../utils/data";
 
+// Animations
+import { pageInit } from "../../utils/animVariants";
+
 export default function LandingPage({ handleShowLogin }) {
   const [popularRestaurant, setPopularRestaurant] = useState([]);
   const { state: userState, dispatch: userDispatch } = useContext(UserContext);
@@ -44,10 +47,10 @@ export default function LandingPage({ handleShowLogin }) {
 
   return (
     <motion.div
-      initial={{ x: "100%" }}
-      animate={{ x: 0 }}
-      exit={{ x: "-100%" }}
-      transition={{ duration: 0.5 }}
+      variants={pageInit}
+      initial="hidden"
+      animate="visible"
+      // exit="exit"
     >
       <HeroSection />
       <div className="bg-grey">

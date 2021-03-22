@@ -11,6 +11,9 @@ import MenuCard from "../reusable/MenuCard";
 import { dummyRestaurant } from "../../utils/data";
 import HeroDetail from "../reusable/HeroDetail";
 
+// Animations
+import { pageInit } from "../../utils/animVariants";
+
 export default function DetailProductPage() {
   const [menu, setMenu] = useState(null);
   const { id } = useParams();
@@ -25,10 +28,10 @@ export default function DetailProductPage() {
   }, []);
   return (
     <motion.div
-      initial={{ x: "100%" }}
-      animate={{ x: 0 }}
-      exit={{ x: "-100%" }}
-      transition={{ duration: 0.5 }}
+      variants={pageInit}
+      initial="hidden"
+      animate="visible"
+      exit="exit"
     >
       <HeroDetail data={menu} />
       <div className="bg-grey py-5 mt-4">

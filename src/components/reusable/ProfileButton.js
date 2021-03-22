@@ -2,6 +2,7 @@ import { useContext, useState, useEffect } from "react";
 
 import { Dropdown } from "react-bootstrap";
 import { Link, useHistory } from "react-router-dom";
+import { motion } from "framer-motion";
 
 // State Management
 import { UserContext } from "../../contexts/userContext";
@@ -28,14 +29,19 @@ const ProfileButton = () => {
     userDispatch({
       type: "LOGOUT",
     });
-
-    history.push("/");
+    history.location.pathname !== "/" && history.push("/");
   };
 
   return (
     <>
       <Link to={userState.loggedUser.userrole == 1 ? "/income" : "/cart"}>
-        <div style={{ width: "40px", height: "40px", position: "relative" }}>
+        <motion.div
+          whileHover={{
+            rotate: [0, 20, -20, 20, -20, 0],
+            transition: { duration: 0.5 },
+          }}
+          style={{ width: "40px", height: "40px", position: "relative" }}
+        >
           {cartState.carts.length > 0 && (
             <div
               className="cart-badge"
@@ -61,7 +67,7 @@ const ProfileButton = () => {
             </div>
           )}
           <img src={iconCart} alt="cart" width="40" />
-        </div>
+        </motion.div>
       </Link>
       <Dropdown className="ml-2">
         <Dropdown.Toggle

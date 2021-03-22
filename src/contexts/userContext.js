@@ -8,6 +8,7 @@ const initialState = {
   isLogin: false,
   users: [],
   loggedUser: null,
+  orderLocation: { lng: 106.735157, lat: -6.301431 },
 };
 
 const reducer = (state, action) => {
@@ -27,6 +28,12 @@ const reducer = (state, action) => {
         ...state,
         isLogin: false,
         loggedUser: null,
+      };
+      break;
+    case "ORDER_LOC":
+      return {
+        ...state,
+        orderLocation: payload,
       };
       break;
 

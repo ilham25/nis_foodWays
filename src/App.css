@@ -1,3 +1,7 @@
+body {
+  overflow-x: hidden;
+}
+
 .heading {
   font-family: "Abhaya Libre", serif;
 }
@@ -7,6 +11,9 @@
 }
 .bg-grey {
   background-color: #efefef;
+}
+.bg-brown {
+  background-color: #433434;
 }
 .btn {
   font-size: 0.9em !important;

@@ -20,9 +20,11 @@ import CartOrder from "../reusable/CartOrder";
 import MapModal from "../modal/MapModal";
 
 // Assets
-
 import iconMap from "../../assets/svg/map.svg";
 import iconMapPointer from "../../assets/svg/map-pointer.svg";
+
+// Animations
+import { pageInit } from "../../utils/animVariants";
 
 export default function CartPage() {
   const { state: userState, dispatch: userDispatch } = useContext(UserContext);
@@ -108,10 +110,10 @@ export default function CartPage() {
 
   return (
     <motion.div
-      initial={{ x: "100%" }}
-      animate={{ x: 0 }}
-      exit={{ x: "-100%" }}
-      transition={{ duration: 0.5 }}
+      variants={pageInit}
+      initial="hidden"
+      animate="visible"
+      exit="exit"
       className="bg-grey py-5 mt-4"
     >
       <Container>
@@ -163,7 +165,6 @@ export default function CartPage() {
         <Row>
           <Col sm={12} lg={7}>
             <hr className="divider" />
-
             {cartState.carts.map((cart) => (
               <CartOrder data={cart} key={cart.id} />
             ))}

@@ -1,4 +1,5 @@
 import { Col, Card, Row, Button } from "react-bootstrap";
+import { motion } from "framer-motion";
 
 // Assets
 import brandLogo from "../../assets/svg/brand.svg";
@@ -6,7 +7,15 @@ import brandLogo from "../../assets/svg/brand.svg";
 function HistoryCard({ userrole, data }) {
   const { date, day, total, user, restaurant } = data;
   return (
-    <Col xs={12} md={12} className="mb-4">
+    <Col
+      as={motion.div}
+      initial={{ y: "50vh" }}
+      animate={{ y: 0 }}
+      transition={{ duration: 0.5, type: "spring" }}
+      xs={12}
+      md={12}
+      className="mb-4"
+    >
       <Card style={{ border: "none" }}>
         <Card.Body>
           <Row>

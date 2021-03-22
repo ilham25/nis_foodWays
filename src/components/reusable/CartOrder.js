@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext } from "react";
 
 import { Row, Col, Button } from "react-bootstrap";
 import { motion } from "framer-motion";
@@ -12,7 +12,7 @@ import iconRemove from "../../assets/svg/remove.svg";
 export default function CartOrder({ data }) {
   const { state: cartState, dispatch: cartDispatch } = useContext(CartContext);
 
-  const { photo, title, price, qty } = data;
+  const { id, photo, title, price, qty } = data;
 
   const handleRemoveCart = () => {
     cartDispatch({
@@ -36,7 +36,12 @@ export default function CartOrder({ data }) {
   };
 
   return (
-    <motion.div>
+    <motion.div
+      exit={{ y: "-50vh" }}
+      initial={{ y: "50vh" }}
+      animate={{ y: 0 }}
+      transition={{ duration: 0.5, delay: 0.5, type: "spring" }}
+    >
       <Row>
         <Col xs={3} md={2}>
           <img
@@ -105,6 +110,11 @@ export default function CartOrder({ data }) {
                   border: "none",
                 }}
                 onClick={handleDeleteCart}
+                as={motion.button}
+                whileHover={{
+                  rotate: [0, 20, -20, 20, -20, 0],
+                  transition: { duration: 0.5 },
+                }}
               >
                 <img src={iconRemove} alt="remove icon" height="20" />
               </Button>

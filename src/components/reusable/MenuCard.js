@@ -7,7 +7,7 @@ import { motion } from "framer-motion";
 import { CartContext } from "../../contexts/cartContext";
 
 // Animation
-import { cardInit } from "../../utils/animVariants";
+import { menuCardInit } from "../../utils/animVariants";
 
 export default function MenuCard({ data }) {
   const { state: cartState, dispatch: cartDispatch } = useContext(CartContext);
@@ -21,7 +21,7 @@ export default function MenuCard({ data }) {
   };
   return (
     <Col xs={12} md={4} lg={3} className="mb-4">
-      <motion.div>
+      <motion.div variants={menuCardInit}>
         <Card
           style={{ border: "none", cursor: "pointer" }}
           as={motion.div}
